@@ -136,6 +136,10 @@ body {
     background: linear-gradient(135deg, rgba(15, 76, 129, 0.06), rgba(249, 168, 38, 0.1));
 }
 
+.section--highlight {
+    background: linear-gradient(140deg, rgba(15, 76, 129, 0.08), rgba(12, 27, 42, 0.02) 45%, rgba(249, 168, 38, 0.05));
+}
+
 .section--dark {
     background: radial-gradient(circle at top, rgba(249, 168, 38, 0.12), transparent 55%), #0C1B2A;
     color: white;
@@ -229,6 +233,85 @@ body {
     color: rgba(12, 27, 42, 0.7);
 }
 
+.skills {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.skills__placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 600;
+    color: rgba(12, 27, 42, 0.55);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    border: 1px dashed rgba(15, 76, 129, 0.2);
+}
+
+.skill-card {
+    background-color: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(12, 27, 42, 0.08);
+    box-shadow: 0 24px 48px rgba(12, 27, 42, 0.09);
+    display: grid;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 58px rgba(12, 27, 42, 0.14);
+}
+
+.skill-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.skill-card__header h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+}
+
+.skill-card__value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.skill-card__headline {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.skill-card__bar {
+    position: relative;
+    height: 0.65rem;
+    border-radius: 999px;
+    background: rgba(15, 76, 129, 0.12);
+    overflow: hidden;
+}
+
+.skill-card__progress {
+    --progress: 0%;
+    height: 100%;
+    width: var(--progress);
+    background: linear-gradient(90deg, rgba(15, 76, 129, 0.95), rgba(249, 168, 38, 0.95));
+    border-radius: 999px;
+    transition: width 0.6s ease;
+}
+
 .timeline {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -285,6 +368,62 @@ body {
     font-weight: 700;
     color: var(--color-secondary);
     margin-bottom: 0.75rem;
+}
+
+.achievements {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.achievements__placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 600;
+    color: rgba(12, 27, 42, 0.55);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    border: 1px dashed rgba(249, 168, 38, 0.35);
+}
+
+.achievement-card {
+    position: relative;
+    background-color: white;
+    border-radius: 1.5rem;
+    padding: 2.2rem;
+    border: 1px solid rgba(12, 27, 42, 0.08);
+    box-shadow: 0 26px 52px rgba(12, 27, 42, 0.1);
+    display: grid;
+    gap: 0.85rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 62px rgba(12, 27, 42, 0.15);
+}
+
+.achievement-card__metric {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(15, 76, 129, 0.1);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+}
+
+.achievement-card__context {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: rgba(12, 27, 42, 0.6);
+    font-weight: 700;
 }
 
 .insights {
@@ -424,6 +563,18 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
+.btn--ghost {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    background: transparent;
+    backdrop-filter: blur(6px);
+}
+
+.btn--ghost:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
 @media (max-width: 768px) {
     .hero {
         padding: 5rem 1.5rem;
@@ -444,5 +595,10 @@ body {
 
     .timeline__item::before {
         display: none;
+    }
+
+    .skills,
+    .achievements {
+        grid-template-columns: 1fr;
     }
 }

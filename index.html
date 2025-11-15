@@ -19,7 +19,8 @@
                 <p class="hero__subtitle">Ejecutivo/a senior especializado/a en la aceleración de negocios mediante estrategias digitales, liderazgo transformacional y alianzas de alto impacto.</p>
                 <div class="hero__cta">
                     <a href="#trayectoria" class="btn btn--primary">Conoce mi trayectoria</a>
-                    <a href="#contacto" class="btn btn--secondary">Conversemos</a>
+                    <a href="assets/docs/CV_placeholder.pdf" class="btn btn--secondary" download>Descargar CV</a>
+                    <a href="https://www.linkedin.com/in/tu-perfil-ejecutivo" class="btn btn--ghost" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
                 </div>
             </div>
             <div class="hero__card">
@@ -105,6 +106,16 @@
                 </div>
             </section>
 
+            <section class="section" id="habilidades">
+                <div class="section__header">
+                    <span class="section__eyebrow">Mapa de habilidades</span>
+                    <h2>Competencias cuantificadas para dirigir la transformación</h2>
+                </div>
+                <div class="skills" id="skills-grid" aria-live="polite">
+                    <p class="skills__placeholder">Cargando habilidades clave…</p>
+                </div>
+            </section>
+
             <section class="section" id="trayectoria">
                 <div class="section__header">
                     <span class="section__eyebrow">Trayectoria destacada</span>
@@ -132,6 +143,16 @@
                             <p>Diseñé la primera incubadora corporativa de la compañía, lanzando 12 productos disruptivos y capturando 3 patentes estratégicas en mercados emergentes.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section class="section section--highlight" id="logros">
+                <div class="section__header">
+                    <span class="section__eyebrow">Logros destacados</span>
+                    <h2>Resultados emblemáticos que respaldan mi liderazgo</h2>
+                </div>
+                <div class="achievements" id="achievements-grid" aria-live="polite">
+                    <p class="achievements__placeholder">Integrando hitos de impacto…</p>
                 </div>
             </section>
 
@@ -213,7 +234,8 @@
                 </div>
                 <div class="footer__actions">
                     <a class="btn btn--primary" href="mailto:tu.email@empresa.com">tu.email@empresa.com</a>
-                    <a class="btn btn--outline" href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
+                    <a class="btn btn--outline" href="https://www.linkedin.com/in/tu-perfil-ejecutivo" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+                    <a class="btn btn--ghost" href="assets/docs/CV_placeholder.pdf" download>Descargar CV</a>
                 </div>
             </div>
             <p class="footer__note">© <span id="year"></span> [Tu Nombre]. Todos los derechos reservados.</p>
@@ -222,6 +244,81 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const skillsGrid = document.getElementById('skills-grid');
+        const achievementsGrid = document.getElementById('achievements-grid');
+        const linkedinLinks = document.querySelectorAll('[data-linkedin]');
+
+        fetch('assets/docs/linkedin_url.txt')
+            .then(response => response.text())
+            .then(url => {
+                const cleanUrl = url.trim();
+                if (!cleanUrl) {
+                    return;
+                }
+                linkedinLinks.forEach(link => {
+                    link.href = cleanUrl;
+                });
+            })
+            .catch(() => {
+                /* Mantener los valores por defecto si no se encuentra el archivo */
+            });
+
+        fetch('assets/data/skills.json')
+            .then(response => response.json())
+            .then(skills => {
+                if (!Array.isArray(skills) || skills.length === 0) {
+                    skillsGrid.innerHTML = '<p class="skills__placeholder">Actualiza assets/data/skills.json con tus competencias clave.</p>';
+                    return;
+                }
+
+                skillsGrid.innerHTML = '';
+                skills.forEach(skill => {
+                    const card = document.createElement('article');
+                    card.className = 'skill-card';
+                    card.innerHTML = `
+                        <div class="skill-card__header">
+                            <h3>${skill.name}</h3>
+                            <span class="skill-card__value">${skill.level}%</span>
+                        </div>
+                        <span class="skill-card__headline">${skill.headline}</span>
+                        <div class="skill-card__bar">
+                            <div class="skill-card__progress"></div>
+                        </div>
+                        <p>${skill.description}</p>
+                    `;
+                    card.querySelector('.skill-card__progress').style.setProperty('--progress', `${skill.level}%`);
+                    skillsGrid.appendChild(card);
+                });
+            })
+            .catch(() => {
+                skillsGrid.innerHTML = '<p class="skills__placeholder">No se pudieron cargar las habilidades. Verifica assets/data/skills.json.</p>';
+            });
+
+        fetch('assets/data/achievements.json')
+            .then(response => response.json())
+            .then(achievements => {
+                if (!Array.isArray(achievements) || achievements.length === 0) {
+                    achievementsGrid.innerHTML = '<p class="achievements__placeholder">Actualiza assets/data/achievements.json con tus hitos clave.</p>';
+                    return;
+                }
+
+                achievementsGrid.innerHTML = '';
+                achievements.forEach(achievement => {
+                    const card = document.createElement('article');
+                    card.className = 'achievement-card';
+                    card.innerHTML = `
+                        <div class="achievement-card__metric">${achievement.metric}</div>
+                        <h3>${achievement.title}</h3>
+                        <p>${achievement.description}</p>
+                        <span class="achievement-card__context">${achievement.context}</span>
+                    `;
+                    achievementsGrid.appendChild(card);
+                });
+            })
+            .catch(() => {
+                achievementsGrid.innerHTML = '<p class="achievements__placeholder">No se pudieron cargar los logros. Verifica assets/data/achievements.json.</p>';
+            });
     </script>
 </body>
 </html>

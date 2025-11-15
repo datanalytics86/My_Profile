@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Estrategia corporativa",
+    "level": 96,
+    "headline": "Crecimiento sostenible",
+    "description": "Diseño portafolios y modelos operativos que escalan negocios multilatinos con gobierno sólido."
+  },
+  {
+    "name": "Transformación digital end-to-end",
+    "level": 94,
+    "headline": "Programas de 9 cifras",
+    "description": "Integro capacidades de producto, datos y operaciones para modernizar procesos y acelerar ingresos."
+  },
+  {
+    "name": "Gobernanza de datos & IA",
+    "level": 92,
+    "headline": "Analytics accionable",
+    "description": "Implemento marcos éticos, plataformas de datos e IA aplicada para decisiones predictivas."
+  },
+  {
+    "name": "Liderazgo y cultura",
+    "level": 91,
+    "headline": "Equipos de alto desempeño",
+    "description": "Construyo culturas de innovación que elevan el compromiso y la productividad de talento senior."
+  },
+  {
+    "name": "Alianzas estratégicas",
+    "level": 89,
+    "headline": "Ecosistemas globales",
+    "description": "Forjo colaboraciones con startups, venture studios y corporativos para acelerar nuevos ingresos."
+  }
+]
