@@ -1,20 +1,20 @@
 [
   {
-    "title": "PMO Analytics que triplicó el EBITDA",
-    "metric": "+3.4x EBITDA",
-    "context": "Retail Omnicanal LATAM",
-    "description": "Implementé un portafolio de analítica avanzada con Excel, Power BI y automatizaciones que optimizó inventarios y rotación de tiendas en 9 países." 
+    "title": "Hub de revenue intelligence",
+    "metric": "+145M USD ingresos",
+    "context": "Cencel Retail",
+    "description": "Lideré un hub que combinó pricing dinámico, promociones personalizadas y forecasting para acelerar el crecimiento regional." 
   },
   {
-    "title": "Plataforma de gobierno de datos",
-    "metric": "99.3% calidad de datos",
-    "context": "Holding financiero regional",
-    "description": "Orquesté la creación de un data lake seguro y trazable que habilitó reporting regulatorio en tiempo real y aceleró cierres contables en 40%." 
+    "title": "Programa de fidelización personalizado",
+    "metric": "2.1x recurrencia",
+    "context": "Mercado Andino",
+    "description": "Diseñé journeys y automatizaciones que elevaron la frecuencia de compra y el ticket promedio de clientes digitales." 
   },
   {
-    "title": "Escuela ejecutiva de storytelling con datos",
-    "metric": "+2.5x adopción digital",
-    "context": "Grupo industrial multilatino",
-    "description": "Diseñé y facilité una academia que formó a 180 líderes en visualización y narrativa de datos para decisiones estratégicas." 
+    "title": "Centro omnicanal data-driven",
+    "metric": "-18% churn",
+    "context": "AndeTel",
+    "description": "Consolidé datos de tiendas, ecommerce y call center para activar campañas de retención y ventas cruzadas de alto impacto." 
   }
 ]

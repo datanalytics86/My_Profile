@@ -1,23 +1,23 @@
 [
   {
-    "title": "Suite de planeación financiera integrada",
-    "impact": "+18% margen operativo",
+    "title": "Motor de revenue intelligence Cencel",
+    "impact": "+32% crecimiento comparable",
     "year": "2023",
-    "description": "Implementé un modelo financiero conectado a ERP y CRM que permite escenarios en tiempo real, integrando Excel avanzado con Power BI y automatización de cierres." ,
-    "skills": ["Excel 6/7", "Power BI", "Automatización"]
+    "description": "Integramos pricing dinámico, promociones personalizadas y tableros ejecutivos conectados a inventario en tiempo real.",
+    "skills": ["Pricing dinámico", "Excel 6/7", "Power BI"]
   },
   {
-    "title": "Programa LATAM Data Fabric",
-    "impact": "12 países sincronizados",
-    "year": "2022",
-    "description": "Orquesté la migración a una arquitectura Data Fabric multi-cloud garantizando gobierno y acceso federado para 140 equipos de negocio." ,
-    "skills": ["SQL", "Gobernanza", "Gestión de proyectos"]
-  },
-  {
-    "title": "Command Center comercial",
-    "impact": "+27% conversión B2B",
+    "title": "Programa de lealtad Mercado Andino",
+    "impact": "2.1x recurrencia",
     "year": "2021",
-    "description": "Desarrollé un centro de control comercial con dashboards interactivos, alertas y rituales ágiles que alinearon marketing, ventas y operaciones." ,
-    "skills": ["Storytelling", "Visual Analytics", "Coaching ejecutivo"]
+    "description": "Lanzamos un ecosistema de loyalty con microsegmentación, journeys automatizados y experimentación continua.",
+    "skills": ["CRM", "Segmentación", "Experimentación"]
+  },
+  {
+    "title": "Centro de decisiones omnicanal AndeTel",
+    "impact": "-18% churn",
+    "year": "2019",
+    "description": "Consolidamos datos de tiendas, ecommerce y call center para priorizar oportunidades y mejorar retención de clientes.",
+    "skills": ["SQL", "Customer journey", "Storytelling"]
   }
 ]

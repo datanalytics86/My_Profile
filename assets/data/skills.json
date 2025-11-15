@@ -1,42 +1,42 @@
 [
   {
-    "name": "Excel financiero avanzado",
+    "name": "Excel para revenue management",
     "level": 6,
     "scale": 7,
-    "headline": "Modelos predictivos y tableros ejecutivos",
-    "description": "Construyo modelos de proyección, análisis de sensibilidad y tableros gerenciales conectados a bases de datos vivas para soportar decisiones de inversión." ,
-    "keywords": ["Power Query", "Macros VBA", "Modelación 3 estados"]
+    "headline": "Pricing dinámico y escenarios comerciales",
+    "description": "Construyo modelos de pricing, forecasting y planes de incentivos conectados a datos en tiempo real.",
+    "keywords": ["Power Query", "Solver", "Tablas dinámicas avanzadas"]
   },
   {
-    "name": "Inteligencia de negocio con Power BI",
+    "name": "Customer analytics con Python y SQL",
     "level": 5,
     "scale": 7,
-    "headline": "Analítica en tiempo real",
-    "description": "Diseño ecosistemas de BI con dataflows, modelado tabular y storytelling visual orientado a C-Level." ,
-    "keywords": ["DAX", "Gateway empresarial", "Row-level security"]
+    "headline": "Segmentación predictiva",
+    "description": "Desarrollo modelos de propensión, churn y LTV integrados en pipelines reproducibles para marketing y producto.",
+    "keywords": ["Python", "SQL", "dbt"]
   },
   {
-    "name": "Gobernanza de datos y SQL",
+    "name": "Experimentación & Product analytics",
+    "level": 5,
+    "scale": 7,
+    "headline": "Aprendizaje continuo",
+    "description": "Diseño growth loops, frameworks A/B y medición causal que aceleran decisiones de producto y marketing.",
+    "keywords": ["Testeo A/B", "Causal inference", "Amplitude"]
+  },
+  {
+    "name": "Operaciones omnicanal",
     "level": 6,
     "scale": 7,
-    "headline": "Operaciones confiables",
-    "description": "Orquesto pipelines, defino catálogos y estándares de calidad que habilitan trazabilidad de punta a punta." ,
-    "keywords": ["Snowflake", "dbt", "Data catalogs"]
+    "headline": "Experiencia unificada",
+    "description": "Habilito integraciones entre ecommerce, tiendas y logística con OKR y gobernanza comercial.",
+    "keywords": ["Customer journey", "OKR", "Service design"]
   },
   {
-    "name": "Gestión de proyectos ágiles",
-    "level": 7,
-    "scale": 7,
-    "headline": "Entrega continua",
-    "description": "Lidero portafolios complejos aplicando OKR, Scrum@Scale y PMO híbridas enfocadas en impacto de negocio." ,
-    "keywords": ["Scrum", "Kanban", "Lean Portfolio"]
-  },
-  {
-    "name": "Storytelling ejecutivo",
+    "name": "Storytelling para C-Level",
     "level": 6,
     "scale": 7,
-    "headline": "Influencia con propósito",
-    "description": "Traduzco datos y hallazgos técnicos en narrativas persuasivas para juntas directivas y stakeholders." ,
-    "keywords": ["Design thinking", "Narrativas de datos", "Facilitación"]
+    "headline": "Narrativas con foco en negocio",
+    "description": "Transformo insights complejos en decisiones ejecutivas mediante dashboards, workshops y comunicación clara.",
+    "keywords": ["Data storytelling", "Workshop facilitation", "Design thinking"]
   }
 ]
