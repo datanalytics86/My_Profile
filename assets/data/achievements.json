@@ -1,20 +1,20 @@
 [
   {
-    "title": "Expansión global en 5 mercados",
-    "metric": "+35% CAGR",
-    "context": "Global Impact Group",
-    "description": "Integré una estrategia de expansión que abrió operaciones en LATAM y Europa con rentabilidad en 12 meses."
+    "title": "PMO Analytics que triplicó el EBITDA",
+    "metric": "+3.4x EBITDA",
+    "context": "Retail Omnicanal LATAM",
+    "description": "Implementé un portafolio de analítica avanzada con Excel, Power BI y automatizaciones que optimizó inventarios y rotación de tiendas en 9 países." 
   },
   {
-    "title": "Transformación digital de 120M USD",
-    "metric": "-28% costos operativos",
-    "context": "NeoCorp",
-    "description": "Dirigí un programa integral que digitalizó procesos core, elevó la satisfacción del cliente y habilitó nuevas fuentes de ingreso."
+    "title": "Plataforma de gobierno de datos",
+    "metric": "99.3% calidad de datos",
+    "context": "Holding financiero regional",
+    "description": "Orquesté la creación de un data lake seguro y trazable que habilitó reporting regulatorio en tiempo real y aceleró cierres contables en 40%." 
   },
   {
-    "title": "Incubadora corporativa con 12 lanzamientos",
-    "metric": "3 patentes",
-    "context": "Visionary Labs",
-    "description": "Fundé un laboratorio interno que aceleró productos disruptivos y posicionó a la compañía como referente de innovación."
+    "title": "Escuela ejecutiva de storytelling con datos",
+    "metric": "+2.5x adopción digital",
+    "context": "Grupo industrial multilatino",
+    "description": "Diseñé y facilité una academia que formó a 180 líderes en visualización y narrativa de datos para decisiones estratégicas." 
   }
 ]

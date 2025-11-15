@@ -1,32 +1,42 @@
 [
   {
-    "name": "Estrategia corporativa",
-    "level": 96,
-    "headline": "Crecimiento sostenible",
-    "description": "Diseño portafolios y modelos operativos que escalan negocios multilatinos con gobierno sólido."
+    "name": "Excel financiero avanzado",
+    "level": 6,
+    "scale": 7,
+    "headline": "Modelos predictivos y tableros ejecutivos",
+    "description": "Construyo modelos de proyección, análisis de sensibilidad y tableros gerenciales conectados a bases de datos vivas para soportar decisiones de inversión." ,
+    "keywords": ["Power Query", "Macros VBA", "Modelación 3 estados"]
   },
   {
-    "name": "Transformación digital end-to-end",
-    "level": 94,
-    "headline": "Programas de 9 cifras",
-    "description": "Integro capacidades de producto, datos y operaciones para modernizar procesos y acelerar ingresos."
+    "name": "Inteligencia de negocio con Power BI",
+    "level": 5,
+    "scale": 7,
+    "headline": "Analítica en tiempo real",
+    "description": "Diseño ecosistemas de BI con dataflows, modelado tabular y storytelling visual orientado a C-Level." ,
+    "keywords": ["DAX", "Gateway empresarial", "Row-level security"]
   },
   {
-    "name": "Gobernanza de datos & IA",
-    "level": 92,
-    "headline": "Analytics accionable",
-    "description": "Implemento marcos éticos, plataformas de datos e IA aplicada para decisiones predictivas."
+    "name": "Gobernanza de datos y SQL",
+    "level": 6,
+    "scale": 7,
+    "headline": "Operaciones confiables",
+    "description": "Orquesto pipelines, defino catálogos y estándares de calidad que habilitan trazabilidad de punta a punta." ,
+    "keywords": ["Snowflake", "dbt", "Data catalogs"]
   },
   {
-    "name": "Liderazgo y cultura",
-    "level": 91,
-    "headline": "Equipos de alto desempeño",
-    "description": "Construyo culturas de innovación que elevan el compromiso y la productividad de talento senior."
+    "name": "Gestión de proyectos ágiles",
+    "level": 7,
+    "scale": 7,
+    "headline": "Entrega continua",
+    "description": "Lidero portafolios complejos aplicando OKR, Scrum@Scale y PMO híbridas enfocadas en impacto de negocio." ,
+    "keywords": ["Scrum", "Kanban", "Lean Portfolio"]
   },
   {
-    "name": "Alianzas estratégicas",
-    "level": 89,
-    "headline": "Ecosistemas globales",
-    "description": "Forjo colaboraciones con startups, venture studios y corporativos para acelerar nuevos ingresos."
+    "name": "Storytelling ejecutivo",
+    "level": 6,
+    "scale": 7,
+    "headline": "Influencia con propósito",
+    "description": "Traduzco datos y hallazgos técnicos en narrativas persuasivas para juntas directivas y stakeholders." ,
+    "keywords": ["Design thinking", "Narrativas de datos", "Facilitación"]
   }
 ]
