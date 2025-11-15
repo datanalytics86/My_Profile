@@ -1,23 +1,23 @@
 [
   {
-    "title": "Motor de revenue intelligence Cencel",
-    "impact": "+32% crecimiento comparable",
-    "year": "2023",
-    "description": "Integramos pricing dinámico, promociones personalizadas y tableros ejecutivos conectados a inventario en tiempo real.",
-    "skills": ["Pricing dinámico", "Excel 6/7", "Power BI"]
+    "year": "2024",
+    "impact": "+19% EBITDA",
+    "title": "Torre de control integrada y automatización RPA",
+    "description": "Implementé dashboards en tiempo real, bots de conciliación y un PMO ágil que conectó FP&A, supply y operaciones en 8 países.",
+    "skills": ["Power BI", "RPA", "Gobernanza de datos"]
   },
   {
-    "title": "Programa de lealtad Mercado Andino",
-    "impact": "2.1x recurrencia",
-    "year": "2021",
-    "description": "Lanzamos un ecosistema de loyalty con microsegmentación, journeys automatizados y experimentación continua.",
-    "skills": ["CRM", "Segmentación", "Experimentación"]
+    "year": "2022",
+    "impact": "-28% ciclo FP&A",
+    "title": "Rolling forecast predictivo para banca retail",
+    "description": "Rediseñé el proceso presupuestario con modelos de propensión, capas de negocio y rituales ejecutivos semanales.",
+    "skills": ["Forecasting", "Excel avanzado", "Storytelling ejecutivo"]
   },
   {
-    "title": "Centro de decisiones omnicanal AndeTel",
-    "impact": "-18% churn",
-    "year": "2019",
-    "description": "Consolidamos datos de tiendas, ecommerce y call center para priorizar oportunidades y mejorar retención de clientes.",
-    "skills": ["SQL", "Customer journey", "Storytelling"]
+    "year": "2020",
+    "impact": "+32% margen",
+    "title": "Optimización de surtido omnicanal",
+    "description": "Desarrollé modelos de rentabilidad por cliente y algoritmos de asignación de inventario que habilitaron campañas personalizadas.",
+    "skills": ["Pricing", "Análisis de cohortes", "SQL"]
   }
 ]

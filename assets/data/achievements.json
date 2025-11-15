@@ -1,20 +1,20 @@
 [
   {
-    "title": "Hub de revenue intelligence",
-    "metric": "+145M USD ingresos",
-    "context": "Cencel Retail",
-    "description": "Lideré un hub que combinó pricing dinámico, promociones personalizadas y forecasting para acelerar el crecimiento regional." 
+    "metric": "+19% EBITDA",
+    "title": "Programa de eficiencia integral Altamar",
+    "description": "Diseñé la torre de control y los ritos de performance que alinearon 14 unidades de negocio y automatizaron reportes críticos.",
+    "context": "Altamar Retail Group · 2022-2024"
   },
   {
-    "title": "Programa de fidelización personalizado",
-    "metric": "2.1x recurrencia",
-    "context": "Mercado Andino",
-    "description": "Diseñé journeys y automatizaciones que elevaron la frecuencia de compra y el ticket promedio de clientes digitales." 
+    "metric": "-28% ciclo FP&A",
+    "title": "Migración a rolling forecast trimestral",
+    "description": "Implementé modelos predictivos y tableros self-service que redujeron el cierre presupuestario de 18 a 13 días hábiles.",
+    "context": "Banco Horizonte · 2019-2021"
   },
   {
-    "title": "Centro omnicanal data-driven",
-    "metric": "-18% churn",
-    "context": "AndeTel",
-    "description": "Consolidé datos de tiendas, ecommerce y call center para activar campañas de retención y ventas cruzadas de alto impacto." 
+    "metric": "+32% margen bruto",
+    "title": "Estrategia comercial omnicanal basada en valor",
+    "description": "Redefiní pricing, surtido y promociones con analítica avanzada, elevando el margen y la recurrencia en segmentos premium.",
+    "context": "Cadenas Vértice · 2013-2015"
   }
 ]

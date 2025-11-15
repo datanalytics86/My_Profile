@@ -1,42 +1,42 @@
 [
   {
-    "name": "Excel para revenue management",
+    "name": "Excel avanzado para planificación financiera",
     "level": 6,
     "scale": 7,
-    "headline": "Pricing dinámico y escenarios comerciales",
-    "description": "Construyo modelos de pricing, forecasting y planes de incentivos conectados a datos en tiempo real.",
+    "headline": "Modelación integrada",
+    "description": "Estructuro modelos de presupuesto, cash flow y sensibilidad con gobernanza y versionado controlado.",
     "keywords": ["Power Query", "Solver", "Tablas dinámicas avanzadas"]
   },
   {
-    "name": "Customer analytics con Python y SQL",
+    "name": "Modelación financiera y valuation",
+    "level": 6,
+    "scale": 7,
+    "headline": "Escenarios y valoración",
+    "description": "Construyo modelos DCF, escenarios de stress y tableros de performance para directorios.",
+    "keywords": ["DCF", "WACC", "Scenario planning"]
+  },
+  {
+    "name": "Inteligencia comercial con Power BI",
     "level": 5,
     "scale": 7,
-    "headline": "Segmentación predictiva",
-    "description": "Desarrollo modelos de propensión, churn y LTV integrados en pipelines reproducibles para marketing y producto.",
+    "headline": "Visualización accionable",
+    "description": "Desarrollo tableros omnicanal que combinan ventas, supply y experiencia para decisiones rápidas.",
+    "keywords": ["Power BI", "Data storytelling", "DAX"]
+  },
+  {
+    "name": "Automatización con Python & SQL",
+    "level": 5,
+    "scale": 7,
+    "headline": "Pipelines de datos",
+    "description": "Genero procesos ETL, bots RPA y modelos predictivos que alimentan FP&A y operaciones.",
     "keywords": ["Python", "SQL", "dbt"]
   },
   {
-    "name": "Experimentación & Product analytics",
-    "level": 5,
-    "scale": 7,
-    "headline": "Aprendizaje continuo",
-    "description": "Diseño growth loops, frameworks A/B y medición causal que aceleran decisiones de producto y marketing.",
-    "keywords": ["Testeo A/B", "Causal inference", "Amplitude"]
-  },
-  {
-    "name": "Operaciones omnicanal",
+    "name": "Liderazgo de transformación",
     "level": 6,
     "scale": 7,
-    "headline": "Experiencia unificada",
-    "description": "Habilito integraciones entre ecommerce, tiendas y logística con OKR y gobernanza comercial.",
-    "keywords": ["Customer journey", "OKR", "Service design"]
-  },
-  {
-    "name": "Storytelling para C-Level",
-    "level": 6,
-    "scale": 7,
-    "headline": "Narrativas con foco en negocio",
-    "description": "Transformo insights complejos en decisiones ejecutivas mediante dashboards, workshops y comunicación clara.",
-    "keywords": ["Data storytelling", "Workshop facilitation", "Design thinking"]
+    "headline": "Cambio cultural",
+    "description": "Impulso estructuras ágiles, OKR y academias internas para sostener la adopción digital.",
+    "keywords": ["OKR", "Agile", "Change management"]
   }
 ]
