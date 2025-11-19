@@ -1,23 +1,23 @@
 [
   {
     "year": "2024",
-    "impact": "+19% EBITDA",
-    "title": "Torre de control integrada y automatización RPA",
-    "description": "Implementé dashboards en tiempo real, bots de conciliación y un PMO ágil que conectó FP&A, supply y operaciones en 8 países.",
-    "skills": ["Power BI", "RPA", "Gobernanza de datos"]
+    "impact": "USD 2.3B",
+    "title": "Control integrado y tableros SAP · Proyecto Santo Domingo",
+    "description": "Lideré control de cambios y reportes corporativos, conectando SAP PS con dashboards Power BI para evaluar proveedores y CAPEX en tiempo real.",
+    "skills": ["SAP PS", "Power BI", "Change control"]
   },
   {
-    "year": "2022",
-    "impact": "-28% ciclo FP&A",
-    "title": "Rolling forecast predictivo para banca retail",
-    "description": "Rediseñé el proceso presupuestario con modelos de propensión, capas de negocio y rituales ejecutivos semanales.",
-    "skills": ["Forecasting", "Excel avanzado", "Storytelling ejecutivo"]
+    "year": "2023",
+    "impact": "300M USD portafolio",
+    "title": "PMO y trazabilidad de portafolio · OXIQUIM",
+    "description": "Implementé método FEL, reporting de forecast y gobernanza de contratos para proyectos químicos y logísticos, reduciendo cambios injustificados de 50% a 10%.",
+    "skills": ["FEL", "Forecast", "RFQ"]
   },
   {
-    "year": "2020",
-    "impact": "+32% margen",
-    "title": "Optimización de surtido omnicanal",
-    "description": "Desarrollé modelos de rentabilidad por cliente y algoritmos de asignación de inventario que habilitaron campañas personalizadas.",
-    "skills": ["Pricing", "Análisis de cohortes", "SQL"]
+    "year": "2018",
+    "impact": "+30% control",
+    "title": "KPIs y mitigación temprana · GHD proyectos mineros",
+    "description": "Desplegué indicadores de valor ganado y gestión de riesgos para portafolio multi-país de USD 50M, evitando sobrecostos y retrasos críticos.",
+    "skills": ["EVM", "Riesgo", "Primavera P6"]
   }
 ]

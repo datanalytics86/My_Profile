@@ -1,74 +1,92 @@
 [
   {
-    "name": "Excel FP&A y modelación integrada",
-    "pillar": "Finanzas",
+    "name": "SAP Project System (PS)",
+    "pillar": "ERP y control",
     "level": 6,
     "scale": 7,
-    "headline": "Presupuesto, cash flow y sensibilidad",
-    "description": "Construyo modelos de planificación, forecast y stress testing con gobiernos de versiones y trazabilidad.",
-    "keywords": ["Solver avanzado", "Escenarios", "Rolling forecast"]
+    "headline": "WBS, presupuestos y reporting",
+    "description": "Modelo estructuras de control, integro presupuestos y consolido reportes de avance y forecast desde SAP PS.",
+    "keywords": ["WBS", "EAC/ETC", "Integración SAP"]
   },
   {
-    "name": "Power BI y storytelling ejecutivo",
+    "name": "Power BI avanzado",
     "pillar": "Analytics",
     "level": 6,
     "scale": 7,
-    "headline": "Dashboards para directorio",
-    "description": "Traduzco datos comerciales y de supply en tableros accionables para CXO, con narrativa y governance.",
-    "keywords": ["Power Query", "DAX", "Data storytelling"]
+    "headline": "Dashboards ejecutivos conectados a SAP",
+    "description": "Construyo tableros para dirección usando SAP y datos operacionales, habilitando evaluación de proveedores y seguimiento CAPEX.",
+    "keywords": ["Power Query", "DAX", "Storytelling"]
   },
   {
-    "name": "SQL + Python para automatización",
-    "pillar": "Datos",
-    "level": 5,
-    "scale": 7,
-    "headline": "Pipelines y bots financieros",
-    "description": "Orquesto ETL, RPA y scoring predictivo que alimentan FP&A, revenue y riesgo en tiempo real.",
-    "keywords": ["Python", "SQL", "APIs"]
-  },
-  {
-    "name": "Estrategia de ingresos y pricing",
-    "pillar": "Negocio",
+    "name": "Excel + Power Pivot / Query",
+    "pillar": "Planificación",
     "level": 6,
     "scale": 7,
-    "headline": "Value based pricing",
-    "description": "Diseño y ejecuto estrategias comerciales omnicanal, elasticidades y mecanismos de pricing dinámico.",
-    "keywords": ["Elasticidad", "Omnicanal", "Unit economics"]
+    "headline": "Modelos de cash flow y sensibilidad",
+    "description": "Desarrollo modelos integrados de presupuesto, forecast y análisis de variaciones con trazabilidad de versiones.",
+    "keywords": ["Modelado financiero", "Rolling forecast", "Macros/solver"]
   },
   {
-    "name": "M&A y sinergias de 100 días",
-    "pillar": "Transformación",
-    "level": 5,
+    "name": "Primavera P6 y MS Project",
+    "pillar": "Programación",
+    "level": 6,
     "scale": 7,
-    "headline": "Value creation office",
-    "description": "Lidero due diligence financiero, integración post M&A y playbooks de sinergias con gobernanza rigurosa.",
-    "keywords": ["Synergies", "PMI", "Riesgos"]
+    "headline": "Rutas críticas y valor ganado",
+    "description": "Ejecuto planificación detallada, control de cronograma y análisis de valor ganado para proyectos de alto CAPEX.",
+    "keywords": ["Baseline", "Critical path", "EVM"]
   },
   {
-    "name": "Gestión de riesgo y control interno",
+    "name": "Gobernanza PMO (FEL/PMI)",
+    "pillar": "Metodología",
+    "level": 6,
+    "scale": 7,
+    "headline": "Procesos y control de cambios",
+    "description": "Implemento oficinas de proyectos, change control y estándares FEL-PMI para asegurar cumplimiento y visibilidad ejecutiva.",
+    "keywords": ["FEL", "PMI", "Change control"]
+  },
+  {
+    "name": "Cost control y forecast",
     "pillar": "Finanzas",
-    "level": 5,
-    "scale": 7,
-    "headline": "Compliance y resiliencia",
-    "description": "Modelo riesgo financiero y operacional, estableciendo alertas tempranas y auditoría continua.",
-    "keywords": ["Riesgo", "Controles", "Compliance"]
-  },
-  {
-    "name": "Data storytelling & board readiness",
-    "pillar": "Gobernanza",
     "level": 6,
     "scale": 7,
-    "headline": "Narrativa y decisiones",
-    "description": "Conecto métricas con impacto en EBITDA y cash para acelerar decisiones de directorio y C-Suite.",
-    "keywords": ["Board deck", "EBITDA", "Cash focus"]
+    "headline": "CAPEX, OPEX y variaciones",
+    "description": "Gestiono control presupuestario, provisiones y proyecciones EAC/ETC alineadas a reportes corporativos y de proyecto.",
+    "keywords": ["Cash flow", "Variaciones", "Provisiones"]
   },
   {
-    "name": "Liderazgo y cambio organizacional",
+    "name": "Gestión de contratos y procurement",
+    "pillar": "Ejecución",
+    "level": 6,
+    "scale": 7,
+    "headline": "RFQ, compliance y claims",
+    "description": "Elevo la calidad de RFQ, gobierno cambios contractuales y mido desempeño de proveedores para reducir desviaciones.",
+    "keywords": ["RFQ", "Claims", "KPIs proveedores"]
+  },
+  {
+    "name": "Riesgo y simulación (@Risk/Crystal Ball)",
+    "pillar": "Riesgo",
+    "level": 5,
+    "scale": 7,
+    "headline": "Escenarios y mitigación",
+    "description": "Modelo incertidumbre en costos y plazos, corriendo simulaciones y alertas tempranas para decisiones ejecutivas.",
+    "keywords": ["Monte Carlo", "Contingencias", "Alertas"]
+  },
+  {
+    "name": "Liderazgo y mejora continua",
     "pillar": "Cultura",
     "level": 6,
     "scale": 7,
-    "headline": "Equipos de alto desempeño",
-    "description": "Activo academias internas, OKR y células ágiles para multiplicar adopción digital y disciplina financiera.",
-    "keywords": ["OKR", "Agile", "Upskilling"]
+    "headline": "Equipos Kaizen y formación",
+    "description": "Formo equipos de control de proyectos, despliego Kaizen visual y academias internas para adopción de procesos y herramientas.",
+    "keywords": ["Kaizen", "Coaching", "PMO"]
+  },
+  {
+    "name": "Python y automatización",
+    "pillar": "Datos",
+    "level": 3,
+    "scale": 7,
+    "headline": "Scripts y conectores básicos",
+    "description": "Creo scripts para integrar fuentes, automatizar cargas y alimentar dashboards de control.",
+    "keywords": ["APIs", "ETL", "Bots"]
   }
 ]
