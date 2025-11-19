@@ -10,7 +10,25 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <div class="global-background" aria-hidden="true"></div>
     <div class="page-wrapper">
+        <header class="site-header" aria-label="Navegación principal">
+            <div class="site-header__inner">
+                <a href="#hero" class="site-logo">Nicolás Andrade</a>
+                <nav class="site-nav" aria-label="Anclas de navegación">
+                    <a href="#resumen">Resumen</a>
+                    <a href="#habilidades">Habilidades</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#trayectoria">Trayectoria</a>
+                    <a href="#logros">Logros</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+                <div class="site-header__cta">
+                    <a href="assets/docs/CV_Nicolas_Andrade_Resume_2025.pdf" class="btn btn--secondary" download>CV</a>
+                    <a href="https://www.linkedin.com/in/nicolasandrade" class="btn btn--ghost" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+                </div>
+            </div>
+        </header>
         <header class="hero">
             <div class="hero__overlay"></div>
             <div class="hero__content">
@@ -48,6 +66,25 @@
         </header>
 
         <main>
+            <section class="section section--metrics" id="hero">
+                <div class="metrics" role="list">
+                    <article class="metric" role="listitem">
+                        <h3>Velocidad ejecutiva</h3>
+                        <p>Reduje el ciclo FP&amp;A en 28% incorporando analytics embebido y workflows automatizados.</p>
+                        <span>+180 líderes certificados en data fluency</span>
+                    </article>
+                    <article class="metric" role="listitem">
+                        <h3>Gobernanza integral</h3>
+                        <p>Implementé un modelo integrado de gestión de portafolios que conecta cash, riesgo y experiencia.</p>
+                        <span>12 foros ejecutivos digitalizados</span>
+                    </article>
+                    <article class="metric" role="listitem">
+                        <h3>Impacto omnicanal</h3>
+                        <p>Orquesté despliegues en LATAM y Europa sincronizando supply, marketing y retail media.</p>
+                        <span>+26 implementaciones multinacionales</span>
+                    </article>
+                </div>
+            </section>
             <section class="section" id="resumen">
                 <div class="section__header">
                     <span class="section__eyebrow">Resumen ejecutivo</span>
@@ -128,6 +165,42 @@
                 </div>
                 <div class="projects" id="projects-grid" aria-live="polite">
                     <p class="projects__placeholder">Preparando portafolio de proyectos…</p>
+                </div>
+            </section>
+
+            <section class="section section--advisory" id="advisory">
+                <div class="section__header">
+                    <span class="section__eyebrow">Advisory &amp; boards</span>
+                    <h2>Programas donde agrego valor inmediato</h2>
+                </div>
+                <div class="advisory-grid">
+                    <article class="advisory-card">
+                        <h3>Consejos directivos</h3>
+                        <p>Estructuro playbooks financieros, dashboards y rituales para acelerar decisiones en directorios y comités de auditoría.</p>
+                        <ul>
+                            <li>Playbooks de crisis y resiliencia</li>
+                            <li>Vistas ejecutivas en 48h</li>
+                            <li>Formación de voceros financieros</li>
+                        </ul>
+                    </article>
+                    <article class="advisory-card">
+                        <h3>PMO de transformación</h3>
+                        <p>Codifico roadmaps de automatización, change management y data fluency que conectan visión y ejecución.</p>
+                        <ul>
+                            <li>KPIs integrados con OKR</li>
+                            <li>Academias internas tailor-made</li>
+                            <li>Tableros de riesgos accionables</li>
+                        </ul>
+                    </article>
+                    <article class="advisory-card">
+                        <h3>Deals &amp; integraciones</h3>
+                        <p>Acompaño due diligence y post-merger integration con modelos financieros, sinergias y comunicación stakeholders.</p>
+                        <ul>
+                            <li>Modelo de sinergias 100 días</li>
+                            <li>Valoración de escenarios</li>
+                            <li>Plan de comunicación integrado</li>
+                        </ul>
+                    </article>
                 </div>
             </section>
 
@@ -219,6 +292,19 @@
                 </div>
             </section>
 
+            <section class="section section--alliances" aria-label="Organizaciones que confían en mi trabajo">
+                <div class="alliances">
+                    <p>Confían en mi liderazgo:</p>
+                    <div class="alliances__logos" aria-hidden="true">
+                        <span>Altamar Retail Group</span>
+                        <span>Banco Horizonte</span>
+                        <span>Cadenas Vértice</span>
+                        <span>Analytics Alliance</span>
+                        <span>Summit CFO LATAM</span>
+                    </div>
+                </div>
+            </section>
+
             <section class="section section--accent" id="consejos">
                 <div class="section__header section__header--center">
                     <span class="section__eyebrow">Testimonios</span>
@@ -240,6 +326,14 @@
                 </div>
             </section>
         </main>
+
+        <aside class="floating-cta" aria-label="Contacto inmediato">
+            <p>¿Buscas acelerar tu agenda de transformación?</p>
+            <div class="floating-cta__actions">
+                <a class="btn btn--primary" href="mailto:hola@nicolasandradesocias.com">Escríbeme</a>
+                <a class="btn btn--ghost" href="https://www.linkedin.com/in/nicolasandrade" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+            </div>
+        </aside>
 
         <footer class="footer" id="contacto">
             <div class="footer__content">
@@ -264,6 +358,8 @@
         const achievementsGrid = document.getElementById('achievements-grid');
         const projectsGrid = document.getElementById('projects-grid');
         const linkedinLinks = document.querySelectorAll('[data-linkedin]');
+        const navLinks = document.querySelectorAll('.site-nav a');
+        const sections = Array.from(document.querySelectorAll('section[id]'));
 
         fetch('assets/docs/linkedin_url.txt')
             .then(response => response.text())
@@ -377,6 +473,22 @@
                     projectsGrid.innerHTML = '<p class="projects__placeholder">No se pudieron cargar los proyectos. Verifica assets/data/projects.json.</p>';
                 });
         }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.removeAttribute('aria-current'));
+                    const activeLink = document.querySelector(`.site-nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        activeLink.setAttribute('aria-current', 'true');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.35
+        });
+
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
