@@ -153,7 +153,21 @@
                     <span class="section__eyebrow">Mapa de habilidades</span>
                     <h2>Competencias cuantificadas en escala de 7 niveles</h2>
                 </div>
-                <div class="skills__legend">0 = Fundamentos · 7 = Maestría certificada</div>
+                <div class="skills__legend">0 = Fundamentos · 7 = Maestría certificada · Datos extraídos del CV 2025</div>
+                <div class="skills__insights" id="skills-summary" aria-live="polite">
+                    <article class="skills__insight-card">
+                        <h3>Promedio general</h3>
+                        <p>Calculando métricas…</p>
+                    </article>
+                    <article class="skills__insight-card">
+                        <h3>Fortalezas</h3>
+                        <p>Determinando skills líderes…</p>
+                    </article>
+                    <article class="skills__insight-card">
+                        <h3>Enfoque consultivo</h3>
+                        <p>Mapeando pilares de impacto…</p>
+                    </article>
+                </div>
                 <div class="skills" id="skills-grid" aria-live="polite">
                     <p class="skills__placeholder">Cargando habilidades clave…</p>
                 </div>
@@ -395,6 +409,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const skillsGrid = document.getElementById('skills-grid');
+        const skillsSummary = document.getElementById('skills-summary');
         const achievementsGrid = document.getElementById('achievements-grid');
         const projectsGrid = document.getElementById('projects-grid');
         const linkedinLinks = document.querySelectorAll('[data-linkedin]');
@@ -457,6 +472,59 @@
 
                         skillsGrid.appendChild(card);
                     });
+
+                    if (skillsSummary) {
+                        const avg = (skills.reduce((sum, skill) => sum + (Number(skill.level) || 0), 0) / skills.length) || 0;
+                        const topSkills = skills
+                            .slice()
+                            .sort((a, b) => (Number(b.level) || 0) - (Number(a.level) || 0))
+                            .slice(0, 3);
+                        const pillars = skills.reduce((acc, skill) => {
+                            const pillar = skill.pillar || 'General';
+                            const level = Number(skill.level) || 0;
+                            const scale = Number(skill.scale) || 7;
+                            if (!acc[pillar]) {
+                                acc[pillar] = { total: 0, count: 0, scale };
+                            }
+                            acc[pillar].total += level;
+                            acc[pillar].count += 1;
+                            acc[pillar].scale = scale;
+                            return acc;
+                        }, {});
+
+                        const insights = [
+                            {
+                                title: 'Promedio general',
+                                body: `${avg.toFixed(1)} / 7 en ${skills.length} competencias documentadas`,
+                            },
+                            {
+                                title: 'Fortalezas',
+                                body: topSkills
+                                    .map(skill => `${skill.name} (${skill.level}/${skill.scale || 7})`)
+                                    .join(' · '),
+                            },
+                            {
+                                title: 'Pilares desde el CV',
+                                body: Object.entries(pillars)
+                                    .map(([pillar, data]) => {
+                                        const pillarAvg = data.count ? (data.total / data.count).toFixed(1) : '0';
+                                        return `${pillar}: ${pillarAvg}/${data.scale}`;
+                                    })
+                                    .join(' · '),
+                            },
+                        ];
+
+                        skillsSummary.innerHTML = insights
+                            .map(
+                                insight => `
+                                <article class="skills__insight-card">
+                                    <h3>${insight.title}</h3>
+                                    <p>${insight.body}</p>
+                                </article>
+                            `
+                            )
+                            .join('');
+                    }
                 })
                 .catch(() => {
                     skillsGrid.innerHTML = '<p class="skills__placeholder">No se pudieron cargar las habilidades. Verifica assets/data/skills.json.</p>';

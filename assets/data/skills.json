@@ -1,6 +1,7 @@
 [
   {
     "name": "Excel FP&A y modelación integrada",
+    "pillar": "Finanzas",
     "level": 6,
     "scale": 7,
     "headline": "Presupuesto, cash flow y sensibilidad",
@@ -9,6 +10,7 @@
   },
   {
     "name": "Power BI y storytelling ejecutivo",
+    "pillar": "Analytics",
     "level": 6,
     "scale": 7,
     "headline": "Dashboards para directorio",
@@ -16,7 +18,8 @@
     "keywords": ["Power Query", "DAX", "Data storytelling"]
   },
   {
-    "name": "Automatización con Python + SQL",
+    "name": "SQL + Python para automatización",
+    "pillar": "Datos",
     "level": 5,
     "scale": 7,
     "headline": "Pipelines y bots financieros",
@@ -25,6 +28,7 @@
   },
   {
     "name": "Estrategia de ingresos y pricing",
+    "pillar": "Negocio",
     "level": 6,
     "scale": 7,
     "headline": "Value based pricing",
@@ -32,19 +36,39 @@
     "keywords": ["Elasticidad", "Omnicanal", "Unit economics"]
   },
   {
-    "name": "PMO de transformación y M&A",
+    "name": "M&A y sinergias de 100 días",
+    "pillar": "Transformación",
     "level": 5,
     "scale": 7,
     "headline": "Value creation office",
-    "description": "Lidero due diligence financiero, integración post M&A y playbooks de sinergias de 100 días.",
+    "description": "Lidero due diligence financiero, integración post M&A y playbooks de sinergias con gobernanza rigurosa.",
     "keywords": ["Synergies", "PMI", "Riesgos"]
   },
   {
-    "name": "Liderazgo financiero regional",
+    "name": "Gestión de riesgo y control interno",
+    "pillar": "Finanzas",
+    "level": 5,
+    "scale": 7,
+    "headline": "Compliance y resiliencia",
+    "description": "Modelo riesgo financiero y operacional, estableciendo alertas tempranas y auditoría continua.",
+    "keywords": ["Riesgo", "Controles", "Compliance"]
+  },
+  {
+    "name": "Data storytelling & board readiness",
+    "pillar": "Gobernanza",
     "level": 6,
     "scale": 7,
-    "headline": "Gobernanza y cambio cultural",
-    "description": "Activo estructuras de dirección, academias internas y OKR para capturar valor en operaciones multipaís.",
-    "keywords": ["OKR", "Change management", "Board ready"]
+    "headline": "Narrativa y decisiones",
+    "description": "Conecto métricas con impacto en EBITDA y cash para acelerar decisiones de directorio y C-Suite.",
+    "keywords": ["Board deck", "EBITDA", "Cash focus"]
+  },
+  {
+    "name": "Liderazgo y cambio organizacional",
+    "pillar": "Cultura",
+    "level": 6,
+    "scale": 7,
+    "headline": "Equipos de alto desempeño",
+    "description": "Activo academias internas, OKR y células ágiles para multiplicar adopción digital y disciplina financiera.",
+    "keywords": ["OKR", "Agile", "Upskilling"]
   }
 ]
