@@ -18,6 +18,7 @@
                 <nav class="site-nav" aria-label="Anclas de navegación">
                     <a href="#resumen">Resumen</a>
                     <a href="#habilidades">Habilidades</a>
+                    <a href="#playbook">Playbook</a>
                     <a href="#proyectos">Proyectos</a>
                     <a href="#trayectoria">Trayectoria</a>
                     <a href="#logros">Logros</a>
@@ -155,6 +156,45 @@
                 <div class="skills__legend">0 = Fundamentos · 7 = Maestría certificada</div>
                 <div class="skills" id="skills-grid" aria-live="polite">
                     <p class="skills__placeholder">Cargando habilidades clave…</p>
+                </div>
+            </section>
+
+            <section class="section section--playbook" id="playbook">
+                <div class="section__header">
+                    <span class="section__eyebrow">Playbook de consultoría</span>
+                    <h2>Cómo orquesto la captura de valor en organizaciones complejas</h2>
+                </div>
+                <div class="playbook-grid">
+                    <article class="playbook-card">
+                        <div class="playbook-card__badge">+30 días</div>
+                        <h3>Discovery financiero 360°</h3>
+                        <p>Diagnosticamos performance, contratos críticos y riesgos para priorizar quick wins con CFO y CEO.</p>
+                        <ul>
+                            <li>Flash report de liquidez y cash burn</li>
+                            <li>Árbol de valor y crecimiento rentable</li>
+                            <li>Mapa de riesgos y owners</li>
+                        </ul>
+                    </article>
+                    <article class="playbook-card">
+                        <div class="playbook-card__badge">PMO</div>
+                        <h3>Value Creation Office</h3>
+                        <p>Estructuro gobierno, OKR y tableros ejecutivos que conectan estrategia, operaciones y talento.</p>
+                        <ul>
+                            <li>Rituales semanales con comité</li>
+                            <li>Tracking de sinergias y cash impact</li>
+                            <li>Change management y upskilling</li>
+                        </ul>
+                    </article>
+                    <article class="playbook-card">
+                        <div class="playbook-card__badge">Data</div>
+                        <h3>Data &amp; Automation Lab</h3>
+                        <p>Implemento analítica avanzada, RPA y modelos predictivos para optimizar ingresos y eficiencia.</p>
+                        <ul>
+                            <li>KPIs integrados en tiempo real</li>
+                            <li>Pipelines de datos y APIs</li>
+                            <li>Storytelling para directorios</li>
+                        </ul>
+                    </article>
                 </div>
             </section>
 
@@ -394,17 +434,24 @@
 
                         const card = document.createElement('article');
                         card.className = 'skill-card';
+                        const ticks = Array.from({ length: scale + 1 }, (_, i) => `<span>${i}</span>`).join('');
                         card.innerHTML = `
                             <div class="skill-card__header">
-                                <div class="skill-card__meter" style="--skill-percent: ${percent}%">
-                                    <span>${level}/${scale}</span>
-                                </div>
                                 <div>
                                     <h3>${skill.name}</h3>
                                     <span class="skill-card__headline">${skill.headline ?? ''}</span>
                                 </div>
+                                <div class="skill-card__score">
+                                    <small>Nivel</small>
+                                    <strong>${level}/${scale}</strong>
+                                </div>
                             </div>
                             <p>${skill.description ?? ''}</p>
+                            <div class="skill-card__bar" aria-hidden="true">
+                                <div class="skill-card__bar-fill" style="width:${percent}%;"></div>
+                                <div class="skill-card__bar-marker" style="left:${percent}%;">${percent}%</div>
+                            </div>
+                            <div class="skill-card__scale" aria-hidden="true">${ticks}</div>
                             ${keywords.length ? `<ul class="skill-card__tags">${keywords.map(keyword => `<li>${keyword}</li>`).join('')}</ul>` : ''}
                         `;
 

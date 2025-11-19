@@ -400,11 +400,14 @@ body {
 
 .skills__legend {
     max-width: var(--max-width);
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.75rem;
     color: rgba(12, 27, 42, 0.6);
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .skills {
@@ -429,22 +432,24 @@ body {
 .skill-card {
     background-color: white;
     border-radius: 1.5rem;
-    padding: 2.2rem;
+    padding: 2rem 2.25rem;
     border: 1px solid rgba(12, 27, 42, 0.08);
     box-shadow: 0 24px 48px rgba(12, 27, 42, 0.09);
     display: grid;
-    gap: 1.1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 1.15rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 28px 58px rgba(12, 27, 42, 0.14);
+    transform: translateY(-10px);
+    box-shadow: 0 30px 64px rgba(12, 27, 42, 0.15);
+    border-color: rgba(15, 76, 129, 0.18);
 }
 
 .skill-card__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 1.5rem;
 }
 
@@ -459,36 +464,27 @@ body {
     margin-top: 0.35rem;
     font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-weight: 800;
     color: var(--color-secondary);
 }
 
-.skill-card__meter {
-    --skill-percent: 0%;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: conic-gradient(var(--color-secondary) var(--skill-percent), rgba(15, 76, 129, 0.12) var(--skill-percent));
-    display: grid;
-    place-items: center;
-    position: relative;
-    font-weight: 700;
+.skill-card__score {
+    text-align: right;
+    min-width: 110px;
+}
+
+.skill-card__score strong {
+    display: block;
+    font-size: 1.4rem;
     color: var(--color-primary);
 }
 
-.skill-card__meter::after {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border-radius: 50%;
-    background: white;
-    box-shadow: inset 0 0 0 1px rgba(12, 27, 42, 0.06);
-}
-
-.skill-card__meter span {
-    position: relative;
-    font-size: 1.05rem;
+.skill-card__score small {
+    color: rgba(12, 27, 42, 0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .skill-card__tags {
@@ -507,6 +503,135 @@ body {
     color: rgba(12, 27, 42, 0.75);
     font-size: 0.8rem;
     font-weight: 600;
+}
+
+.skill-card__bar {
+    position: relative;
+    width: 100%;
+    height: 18px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(15, 76, 129, 0.08), rgba(12, 27, 42, 0.1));
+    overflow: hidden;
+}
+
+.skill-card__bar-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0f4c81, #f9a826);
+    transform-origin: left;
+    transition: width 0.6s ease;
+}
+
+.skill-card__bar-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #0f4c81;
+    color: white;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    box-shadow: 0 10px 22px rgba(12, 27, 42, 0.2);
+    white-space: nowrap;
+}
+
+.skill-card__scale {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin-top: 0.4rem;
+    color: rgba(12, 27, 42, 0.55);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+}
+
+.skill-card__scale span:first-child {
+    justify-self: start;
+}
+
+.skill-card__scale span:last-child {
+    justify-self: end;
+}
+
+.section--playbook {
+    background: linear-gradient(135deg, rgba(12, 27, 42, 0.03), rgba(15, 76, 129, 0.08));
+}
+
+.playbook-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.playbook-card {
+    background: white;
+    padding: 2.2rem;
+    border-radius: 1.4rem;
+    border: 1px solid rgba(12, 27, 42, 0.08);
+    box-shadow: 0 24px 48px rgba(12, 27, 42, 0.09);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.playbook-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(249, 168, 38, 0.12), rgba(15, 76, 129, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.playbook-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 64px rgba(12, 27, 42, 0.15);
+}
+
+.playbook-card:hover::after {
+    opacity: 1;
+}
+
+.playbook-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.playbook-card p {
+    margin: 0;
+    color: rgba(12, 27, 42, 0.75);
+    position: relative;
+    z-index: 1;
+}
+
+.playbook-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: rgba(12, 27, 42, 0.7);
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.playbook-card__badge {
+    align-self: start;
+    justify-self: start;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0f4c81, #f9a826);
+    color: white;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    position: relative;
+    z-index: 1;
 }
 
 .section--projects {

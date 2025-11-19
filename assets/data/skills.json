@@ -1,42 +1,50 @@
 [
   {
-    "name": "Excel avanzado para planificación financiera",
+    "name": "Excel FP&A y modelación integrada",
     "level": 6,
     "scale": 7,
-    "headline": "Modelación integrada",
-    "description": "Estructuro modelos de presupuesto, cash flow y sensibilidad con gobernanza y versionado controlado.",
-    "keywords": ["Power Query", "Solver", "Tablas dinámicas avanzadas"]
+    "headline": "Presupuesto, cash flow y sensibilidad",
+    "description": "Construyo modelos de planificación, forecast y stress testing con gobiernos de versiones y trazabilidad.",
+    "keywords": ["Solver avanzado", "Escenarios", "Rolling forecast"]
   },
   {
-    "name": "Modelación financiera y valuation",
+    "name": "Power BI y storytelling ejecutivo",
     "level": 6,
     "scale": 7,
-    "headline": "Escenarios y valoración",
-    "description": "Construyo modelos DCF, escenarios de stress y tableros de performance para directorios.",
-    "keywords": ["DCF", "WACC", "Scenario planning"]
+    "headline": "Dashboards para directorio",
+    "description": "Traduzco datos comerciales y de supply en tableros accionables para CXO, con narrativa y governance.",
+    "keywords": ["Power Query", "DAX", "Data storytelling"]
   },
   {
-    "name": "Inteligencia comercial con Power BI",
+    "name": "Automatización con Python + SQL",
     "level": 5,
     "scale": 7,
-    "headline": "Visualización accionable",
-    "description": "Desarrollo tableros omnicanal que combinan ventas, supply y experiencia para decisiones rápidas.",
-    "keywords": ["Power BI", "Data storytelling", "DAX"]
+    "headline": "Pipelines y bots financieros",
+    "description": "Orquesto ETL, RPA y scoring predictivo que alimentan FP&A, revenue y riesgo en tiempo real.",
+    "keywords": ["Python", "SQL", "APIs"]
   },
   {
-    "name": "Automatización con Python & SQL",
-    "level": 5,
-    "scale": 7,
-    "headline": "Pipelines de datos",
-    "description": "Genero procesos ETL, bots RPA y modelos predictivos que alimentan FP&A y operaciones.",
-    "keywords": ["Python", "SQL", "dbt"]
-  },
-  {
-    "name": "Liderazgo de transformación",
+    "name": "Estrategia de ingresos y pricing",
     "level": 6,
     "scale": 7,
-    "headline": "Cambio cultural",
-    "description": "Impulso estructuras ágiles, OKR y academias internas para sostener la adopción digital.",
-    "keywords": ["OKR", "Agile", "Change management"]
+    "headline": "Value based pricing",
+    "description": "Diseño y ejecuto estrategias comerciales omnicanal, elasticidades y mecanismos de pricing dinámico.",
+    "keywords": ["Elasticidad", "Omnicanal", "Unit economics"]
+  },
+  {
+    "name": "PMO de transformación y M&A",
+    "level": 5,
+    "scale": 7,
+    "headline": "Value creation office",
+    "description": "Lidero due diligence financiero, integración post M&A y playbooks de sinergias de 100 días.",
+    "keywords": ["Synergies", "PMI", "Riesgos"]
+  },
+  {
+    "name": "Liderazgo financiero regional",
+    "level": 6,
+    "scale": 7,
+    "headline": "Gobernanza y cambio cultural",
+    "description": "Activo estructuras de dirección, academias internas y OKR para capturar valor en operaciones multipaís.",
+    "keywords": ["OKR", "Change management", "Board ready"]
   }
 ]
