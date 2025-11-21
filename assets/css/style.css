@@ -1338,6 +1338,90 @@ body {
     color: #bfdbfe;
 }
 
+.cms-card--qa {
+    border-color: rgba(94, 234, 212, 0.3);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+.qa-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.qa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.9rem;
+}
+
+.qa-pill {
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 14px;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(148, 163, 184, 0.04));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.qa-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.qa-label {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.qa-value {
+    margin: 0.2rem 0 0.1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.qa-meta {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+}
+
+.qa-pill[data-state="ok"] {
+    border-color: rgba(16, 185, 129, 0.6);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(56, 189, 248, 0.08));
+    color: #c7f9cc;
+}
+
+.qa-pill[data-state="warn"] {
+    border-color: rgba(251, 191, 36, 0.6);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(250, 204, 21, 0.08));
+    color: #fef3c7;
+}
+
+.qa-pill[data-state="error"] {
+    border-color: rgba(239, 68, 68, 0.6);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(248, 113, 113, 0.08));
+    color: #fecdd3;
+}
+
+.qa-pill[data-state="neutral"] {
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #e2e8f0;
+}
+
+@media (max-width: 768px) {
+    .qa-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 @media (max-width: 720px) {
     .cms-header {
         flex-direction: column;

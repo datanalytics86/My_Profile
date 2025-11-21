@@ -17,8 +17,9 @@ Abre `http://localhost:8000` en el navegador.
    - **Usuario:** `nicolas`
    - **Contraseña:** `andrade2025`
 3. Ajusta textos (hero, resumen, métricas, CTA) o pega los JSON de habilidades, logros y proyectos.
-4. Guarda los cambios. Se almacenan en `localStorage` del navegador; si borras la caché, vuelves al contenido del repositorio.
-5. Recarga `index.html` para ver los cambios aplicados.
+4. Ejecuta el **healthcheck QA/QC** para validar formatos y saber si usas datos locales o del repositorio.
+5. Guarda los cambios o exporta un respaldo (`admin-backup.json`). Se almacenan en `localStorage` del navegador; si borras la caché, vuelves al contenido del repositorio.
+6. Recarga `index.html` para ver los cambios aplicados.
 
 ## Despliegue en Vercel
 

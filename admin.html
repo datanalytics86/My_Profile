@@ -41,6 +41,48 @@
             </form>
         </section>
 
+        <section class="cms-card cms-card--qa" id="qa-card" hidden>
+            <div class="qa-header">
+                <div>
+                    <p class="cms-badge">QA/QC</p>
+                    <h2>Salud del panel</h2>
+                    <p>Verifica login, integridad de datasets y overrides antes de publicar.</p>
+                </div>
+                <div class="cms-actions">
+                    <button class="btn btn--secondary" type="button" id="run-healthcheck">Revalidar</button>
+                    <button class="btn btn--ghost" type="button" id="export-config">Exportar respaldo</button>
+                </div>
+            </div>
+            <div class="qa-grid">
+                <div class="qa-pill" id="qa-session">
+                    <p class="qa-label">Sesión</p>
+                    <p class="qa-value">Cerrada</p>
+                    <p class="qa-meta">Accede para habilitar edición</p>
+                </div>
+                <div class="qa-pill" id="qa-texts">
+                    <p class="qa-label">Textos</p>
+                    <p class="qa-value">Sin overrides</p>
+                    <p class="qa-meta">Usando contenido del repositorio</p>
+                </div>
+                <div class="qa-pill" id="qa-skills">
+                    <p class="qa-label">Habilidades</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+                <div class="qa-pill" id="qa-achievements">
+                    <p class="qa-label">Logros</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+                <div class="qa-pill" id="qa-projects">
+                    <p class="qa-label">Proyectos</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+            </div>
+            <p class="cms-helper">El healthcheck revisa que existan campos obligatorios, niveles numéricos y fechas de guardado recientes.</p>
+        </section>
+
         <section class="cms-card cms-card--grid" id="editor-card" hidden>
             <div>
                 <h2>Identidad y contacto</h2>
@@ -116,7 +158,8 @@
             SKILLS: 'skillsData',
             ACHIEVEMENTS: 'achievementsData',
             PROJECTS: 'projectsData',
-            SESSION: 'cmsSession'
+            SESSION: 'cmsSession',
+            META: 'cmsMeta'
         };
 
         const BASE_TEXTS = {
@@ -149,6 +192,7 @@
         };
 
         const loginCard = document.getElementById('login-card');
+        const qaCard = document.getElementById('qa-card');
         const editorCard = document.getElementById('editor-card');
         const loginForm = document.getElementById('login-form');
         const identityForm = document.getElementById('identity-form');
@@ -160,6 +204,18 @@
         const resetBtn = document.getElementById('reset-overrides');
         const statusBox = document.getElementById('cms-status');
         const logoutBtn = document.getElementById('logout-btn');
+        const runHealthcheckBtn = document.getElementById('run-healthcheck');
+        const exportBtn = document.getElementById('export-config');
+
+        const qaPills = {
+            session: document.getElementById('qa-session'),
+            texts: document.getElementById('qa-texts'),
+            skills: document.getElementById('qa-skills'),
+            achievements: document.getElementById('qa-achievements'),
+            projects: document.getElementById('qa-projects')
+        };
+
+        let cachedDatasets = null;
 
         const safeParse = (value) => {
             try { return JSON.parse(value); } catch (e) { return null; }
@@ -188,43 +244,130 @@
             };
 
             const fillWith = async (key, path) => {
-                if (overrides[key]) return overrides[key];
+                if (overrides[key]) return { data: overrides[key], source: 'local' };
                 try {
                     const res = await fetch(path);
-                    return await res.json();
+                    const json = await res.json();
+                    return { data: json, source: 'repo' };
                 } catch (e) {
-                    return [];
+                    return { data: [], source: 'error' };
                 }
             };
 
-            const [skills, achievements, projects] = await Promise.all([
+            const datasets = await Promise.all([
                 fillWith('skills', 'assets/data/skills.json'),
                 fillWith('achievements', 'assets/data/achievements.json'),
                 fillWith('projects', 'assets/data/projects.json')
             ]);
 
-            dataForm.elements.skills.value = JSON.stringify(skills, null, 2);
-            dataForm.elements.achievements.value = JSON.stringify(achievements, null, 2);
-            dataForm.elements.projects.value = JSON.stringify(projects, null, 2);
+            const [skills, achievements, projects] = datasets;
+
+            dataForm.elements.skills.value = JSON.stringify(skills.data || [], null, 2);
+            dataForm.elements.achievements.value = JSON.stringify(achievements.data || [], null, 2);
+            dataForm.elements.projects.value = JSON.stringify(projects.data || [], null, 2);
+
+            cachedDatasets = { skills, achievements, projects };
+            return cachedDatasets;
         };
 
-        const guardSession = () => {
+        const formatDate = (isoString) => {
+            if (!isoString) return 'Sin registro';
+            const date = new Date(isoString);
+            return date.toLocaleString('es-CL', { dateStyle: 'medium', timeStyle: 'short' });
+        };
+
+        const getMeta = () => safeParse(localStorage.getItem(STORAGE_KEYS.META)) || {};
+
+        const setMeta = (payload) => {
+            const next = { ...getMeta(), ...payload };
+            localStorage.setItem(STORAGE_KEYS.META, JSON.stringify(next));
+        };
+
+        const setPillState = (pill, { state = 'neutral', value = '-', meta = '' }) => {
+            pill.dataset.state = state;
+            pill.querySelector('.qa-value').textContent = value;
+            pill.querySelector('.qa-meta').textContent = meta;
+        };
+
+        const validateArray = (data, requiredKeys = [], customCheck, minLength = 1) => {
+            if (!Array.isArray(data)) return { ok: false, detail: 'No es un arreglo' };
+            const missing = data.find(item => requiredKeys.some(key => !(key in item)));
+            if (missing) return { ok: false, detail: 'Faltan campos obligatorios' };
+            if (data.length < minLength) return { ok: false, detail: 'Sin registros detectados' };
+            if (customCheck) {
+                const result = customCheck(data);
+                if (result !== true) return { ok: false, detail: result };
+            }
+            return { ok: true, detail: `Registros: ${data.length}` };
+        };
+
+        const runHealthcheck = async () => {
+            const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+            setPillState(qaPills.session, {
+                state: sessionOpen ? 'ok' : 'warn',
+                value: sessionOpen ? 'Sesión activa' : 'Sesión cerrada',
+                meta: sessionOpen ? 'Puedes editar y guardar cambios' : 'Inicia sesión para editar'
+            });
+
+            const overrides = loadOverrides();
+            const hasOverrides = Object.keys(overrides).length > 0;
+            const meta = getMeta();
+            setPillState(qaPills.texts, {
+                state: hasOverrides ? 'ok' : 'neutral',
+                value: hasOverrides ? 'Overrides activos' : 'Texto base',
+                meta: hasOverrides ? `Guardado: ${formatDate(meta.textsSavedAt)}` : 'Sin overrides en localStorage'
+            });
+
+            const { skills, achievements, projects } = cachedDatasets || await loadDatasets();
+            const validations = {
+                skills: validateArray(
+                    skills.data,
+                    ['name', 'level', 'scale'],
+                    (entries) => entries.some(item => typeof item.level !== 'number' || typeof item.scale !== 'number')
+                        ? 'Nivel/escala deben ser numéricos'
+                        : true,
+                    3
+                ),
+                achievements: validateArray(achievements.data, ['title', 'description'], null, 1),
+                projects: validateArray(projects.data, ['title', 'description'], null, 1)
+            };
+
+            const apply = (key, label) => {
+                const check = validations[key];
+                const bundle = cachedDatasets?.[key] || { skills, achievements, projects }[key];
+                const source = bundle?.source || 'repo';
+                const state = check.ok ? 'ok' : (bundle?.source === 'error' ? 'error' : 'warn');
+                setPillState(qaPills[key], {
+                    state,
+                    value: check.ok ? `${label}: ${bundle?.data?.length ?? 0}` : 'Revisar JSON',
+                    meta: check.ok ? `Fuente: ${source === 'local' ? 'LocalStorage' : source === 'repo' ? 'Repositorio' : 'Error'}` : check.detail
+                });
+            };
+
+            apply('skills', 'Habilidades');
+            apply('achievements', 'Logros');
+            apply('projects', 'Proyectos');
+        };
+
+        const guardSession = async () => {
             localStorage.setItem(STORAGE_KEYS.SESSION, 'true');
             loginCard.hidden = true;
             editorCard.hidden = false;
+            qaCard.hidden = false;
             setFormValues();
-            loadDatasets();
+            await loadDatasets();
             showStatus('Sesión iniciada. Ajusta los campos y guarda para ver los cambios.', 'success');
+            runHealthcheck();
         };
 
-        loginForm.addEventListener('submit', (event) => {
+        loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const formData = new FormData(loginForm);
             const username = formData.get('username');
             const password = formData.get('password');
 
             if (username === ADMIN_USER && password === ADMIN_PASS) {
-                guardSession();
+                await guardSession();
             } else {
                 showStatus('Credenciales incorrectas. Intenta nuevamente.', 'error');
             }
@@ -238,7 +381,9 @@
                 });
             });
             localStorage.setItem(STORAGE_KEYS.OVERRIDES, JSON.stringify(combined));
+            setMeta({ textsSavedAt: new Date().toISOString() });
             showStatus('Textos guardados. Recarga la landing para verlos aplicados.', 'success');
+            runHealthcheck();
         });
 
         saveDatasetsBtn.addEventListener('click', () => {
@@ -250,8 +395,15 @@
                 localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(skills));
                 localStorage.setItem(STORAGE_KEYS.ACHIEVEMENTS, JSON.stringify(achievements));
                 localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(projects));
+                cachedDatasets = {
+                    skills: { data: skills, source: 'local' },
+                    achievements: { data: achievements, source: 'local' },
+                    projects: { data: projects, source: 'local' }
+                };
+                setMeta({ datasetsSavedAt: new Date().toISOString() });
 
                 showStatus('Datasets guardados. Recarga la landing para ver las grillas actualizadas.', 'success');
+                runHealthcheck();
             } catch (e) {
                 showStatus('Revisa el formato JSON antes de guardar.', 'error');
             }
@@ -262,21 +414,55 @@
             localStorage.removeItem(STORAGE_KEYS.SKILLS);
             localStorage.removeItem(STORAGE_KEYS.ACHIEVEMENTS);
             localStorage.removeItem(STORAGE_KEYS.PROJECTS);
+            localStorage.removeItem(STORAGE_KEYS.META);
             showStatus('Overrides eliminados. La landing usará el contenido del repositorio.', 'info');
             setFormValues();
             loadDatasets();
+            runHealthcheck();
         });
 
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem(STORAGE_KEYS.SESSION);
             loginCard.hidden = false;
             editorCard.hidden = true;
+            qaCard.hidden = true;
             showStatus('Sesión cerrada. Vuelve a ingresar tus credenciales.', 'info');
+        });
+
+        runHealthcheckBtn.addEventListener('click', () => {
+            runHealthcheck();
+            showStatus('Healthcheck ejecutado.', 'info');
+        });
+
+        exportBtn.addEventListener('click', () => {
+            try {
+                const payload = {
+                    texts: loadOverrides(),
+                    datasets: {
+                        skills: safeParse(dataForm.elements.skills.value || '[]'),
+                        achievements: safeParse(dataForm.elements.achievements.value || '[]'),
+                        projects: safeParse(dataForm.elements.projects.value || '[]')
+                    },
+                    meta: getMeta()
+                };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'admin-backup.json';
+                link.click();
+                URL.revokeObjectURL(url);
+                showStatus('Backup exportado en JSON.', 'success');
+            } catch (e) {
+                showStatus('No se pudo exportar el backup.', 'error');
+            }
         });
 
         const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
         if (sessionOpen) {
             guardSession();
+        } else {
+            runHealthcheck();
         }
     </script>
 </body>
