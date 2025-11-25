@@ -1,0 +1,210 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:  # Manual trigger
+
+env:
+  NODE_VERSION: '18.x'
+
+jobs:
+  # ===================================
+  # DEPLOY TO STAGING
+  # ===================================
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: staging
+      url: https://staging.example.com
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for staging
+        env:
+          NODE_ENV: staging
+          API_URL: ${{ secrets.STAGING_API_URL }}
+        run: npm run build
+
+      - name: Deploy to staging server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.STAGING_HOST }}
+          REMOTE_USER: ${{ secrets.STAGING_USER }}
+          TARGET: ${{ secrets.STAGING_PATH }}
+
+      - name: Run smoke tests
+        run: |
+          npm run test:smoke -- --baseUrl=https://staging.example.com
+
+      - name: Notify deployment
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "🚀 Deployed to Staging: ${{ github.repository }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ===================================
+  # DEPLOY TO PRODUCTION
+  # ===================================
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    environment:
+      name: production
+      url: https://example.com
+    needs: []
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for production
+        env:
+          NODE_ENV: production
+          API_URL: ${{ secrets.PRODUCTION_API_URL }}
+        run: npm run build
+
+      - name: Create backup
+        run: |
+          curl -X POST ${{ secrets.BACKUP_WEBHOOK_URL }} \
+            -H "Authorization: Bearer ${{ secrets.BACKUP_TOKEN }}" \
+            -d '{"timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"}'
+
+      - name: Deploy to production
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.PRODUCTION_HOST }}
+          REMOTE_USER: ${{ secrets.PRODUCTION_USER }}
+          TARGET: ${{ secrets.PRODUCTION_PATH }}
+
+      - name: Run smoke tests
+        run: |
+          npm run test:smoke -- --baseUrl=https://example.com
+
+      - name: Health check
+        run: |
+          for i in {1..5}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://example.com/health)
+            if [ $STATUS -eq 200 ]; then
+              echo "Health check passed"
+              exit 0
+            fi
+            echo "Health check attempt $i failed, retrying..."
+            sleep 10
+          done
+          echo "Health check failed after 5 attempts"
+          exit 1
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Notify successful deployment
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "✅ Successfully deployed to Production",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "✅ *Production Deployment Successful*\n*Version:* ${{ github.ref }}\n*Repository:* ${{ github.repository }}\n*URL:* https://example.com"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify on failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "❌ Production deployment failed for ${{ github.repository }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ===================================
+  # ROLLBACK (Manual)
+  # ===================================
+  rollback:
+    name: Rollback Deployment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment:
+      name: production
+
+    steps:
+      - name: Confirm rollback
+        run: echo "Rolling back to previous version..."
+
+      - name: Restore from backup
+        run: |
+          curl -X POST ${{ secrets.RESTORE_WEBHOOK_URL }} \
+            -H "Authorization: Bearer ${{ secrets.BACKUP_TOKEN }}" \
+            -d '{"action": "restore", "timestamp": "latest"}'
+
+      - name: Verify rollback
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://example.com/health)
+          if [ $STATUS -eq 200 ]; then
+            echo "Rollback successful"
+          else
+            echo "Rollback verification failed"
+            exit 1
+          fi
+
+      - name: Notify rollback
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "⚠️ Rollback completed for ${{ github.repository }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
