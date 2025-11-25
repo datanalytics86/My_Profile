@@ -458,12 +458,24 @@
             }
         });
 
-        const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
-        if (sessionOpen) {
-            guardSession();
-        } else {
-            runHealthcheck();
-        }
+        const resumeSession = async () => {
+            const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+            if (!sessionOpen) {
+                runHealthcheck();
+                return;
+            }
+
+            try {
+                await guardSession();
+                showStatus('Sesión restaurada. Continúa editando con tus overrides activos.', 'success');
+            } catch (error) {
+                localStorage.removeItem(STORAGE_KEYS.SESSION);
+                showStatus('No se pudo restaurar la sesión. Ingresa nuevamente para editar.', 'info');
+                runHealthcheck();
+            }
+        };
+
+        resumeSession();
     </script>
 </body>
 </html>
