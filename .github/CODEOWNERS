@@ -1,0 +1,34 @@
+# CODEOWNERS
+#
+# This file defines code ownership for automatic review assignment
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+* @datanalytics86
+
+# Documentation
+*.md @datanalytics86
+/docs/ @datanalytics86
+
+# Security documentation (requires security team review)
+SECURITY_GUIDE.md @datanalytics86
+.github/ISSUE_TEMPLATE/security.md @datanalytics86
+
+# CI/CD workflows (requires DevOps review)
+.github/workflows/ @datanalytics86
+
+# Configuration templates
+/templates/ @datanalytics86
+
+# Code review checklist
+CODE_REVIEW_CHECKLIST.md @datanalytics86
+
+# Standards documentation
+QAQC_STANDARDS.md @datanalytics86
+PROJECT_STRUCTURE.md @datanalytics86
+
+# Contributing guidelines
+CONTRIBUTING.md @datanalytics86
+
+# GitHub-specific files
+.github/ @datanalytics86
