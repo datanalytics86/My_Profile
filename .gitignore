@@ -20,8 +20,8 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
 parts/
 sdist/
 var/
@@ -32,6 +32,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Allow src/lib directory
+!src/lib/
 
 # ===================================
 # Virtual Environments

@@ -1,0 +1,100 @@
+// Prisma Schema for QAQC Framework Web App
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String
+  role          UserRole  @default(EDITOR)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  pages         Page[]
+  sections      Section[]
+
+  @@index([email])
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+// Page model for managing different pages
+model Page {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  description String?
+  isPublished Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  authorId    String
+
+  // Relations
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  sections    Section[]
+
+  @@index([slug])
+  @@index([authorId])
+  @@map("pages")
+}
+
+// Section model for page content blocks
+model Section {
+  id          String      @id @default(cuid())
+  pageId      String
+  type        SectionType
+  title       String?
+  content     String?     // JSON content
+  order       Int         @default(0)
+  isVisible   Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  authorId    String
+
+  // Relations
+  page        Page        @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  author      User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([pageId])
+  @@index([authorId])
+  @@map("sections")
+}
+
+enum SectionType {
+  HERO
+  FEATURES
+  TESTIMONIALS
+  CTA
+  STATS
+  FAQ
+  CONTACT
+  CUSTOM
+}
+
+// Settings model for global configuration
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   // JSON value
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([key])
+  @@map("settings")
+}
