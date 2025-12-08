@@ -5,7 +5,13 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from 'sonner';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  fallback: ['system-ui', 'arial'],
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: {
