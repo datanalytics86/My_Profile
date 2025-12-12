@@ -57,6 +57,7 @@ El workflow en `.github/workflows/ci.yml` ejecuta `ruff`, `black --check` y `pyt
 ## Estructura del proyecto
 ```
 .
+├── index.html                # Página estática de aterrizaje (útil para GitHub Pages)
 ├── .github/workflows/ci.yml   # CI con lint + pruebas
 ├── docs/QA_QC_POLICY.md       # Lineamientos de QA/QC y checklist
 ├── src/my_profile/            # Código fuente
@@ -66,6 +67,16 @@ El workflow en `.github/workflows/ci.yml` ejecuta `ruff`, `black --check` y `pyt
 ├── CHANGELOG.md               # Registro de cambios
 └── README.md                  # Esta guía
 ```
+
+## Vista web rápida
+Si publicas el repositorio con GitHub Pages (root o carpeta `docs`), asegúrate de desplegar también `index.html`. Para verlo en local:
+
+```bash
+python -m http.server 8000
+# Navega a http://localhost:8000/index.html
+```
+
+El archivo enlaza el README, la política QA/QC y el informe de calidad para facilitar la navegación.
 
 ## Cómo contribuir
 Consulta `docs/QA_QC_POLICY.md` para conocer los criterios de revisión, formato de commits y requerimientos de pruebas.
