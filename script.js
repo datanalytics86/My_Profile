@@ -10,14 +10,27 @@ const projectCards = document.querySelectorAll('.project-card');
 const contactForm = document.getElementById('contact-form');
 const skillItems = document.querySelectorAll('.skill-item');
 const statNumbers = document.querySelectorAll('.stat-number');
+const langToggle = document.getElementById('lang-toggle');
 
-// ===== TYPING EFFECT =====
-const titles = [
-    'Desarrollador Full Stack',
-    'Ingeniero de Software',
-    'Especialista en Cloud',
-    'Entusiasta de IA'
+// ===== LANGUAGE STATE =====
+let currentLang = 'es';
+
+// ===== TYPING EFFECT - BILINGUAL =====
+const titlesES = [
+    'Ingeniero Quimico',
+    'Lider de Planificacion',
+    'Especialista en Control de Proyectos',
+    'Experto en Power BI & SAP'
 ];
+
+const titlesEN = [
+    'Chemical Engineer',
+    'Planning Lead',
+    'Project Control Specialist',
+    'Power BI & SAP Expert'
+];
+
+let titles = titlesES;
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -38,14 +51,76 @@ function typeEffect() {
 
     if (!isDeleting && charIndex === currentTitle.length) {
         isDeleting = true;
-        typingSpeed = 2000; // Pause at end
+        typingSpeed = 2000;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         titleIndex = (titleIndex + 1) % titles.length;
-        typingSpeed = 500; // Pause before next word
+        typingSpeed = 500;
     }
 
     setTimeout(typeEffect, typingSpeed);
+}
+
+// ===== LANGUAGE TOGGLE =====
+function toggleLanguage() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+
+    // Update toggle button
+    const langFlag = langToggle.querySelector('.lang-flag');
+    const langText = langToggle.querySelector('.lang-text');
+
+    if (currentLang === 'en') {
+        langFlag.textContent = '🇺🇸';
+        langText.textContent = 'EN';
+        titles = titlesEN;
+    } else {
+        langFlag.textContent = '🇪🇸';
+        langText.textContent = 'ES';
+        titles = titlesES;
+    }
+
+    // Update all translatable elements
+    updatePageLanguage();
+
+    // Reset typing effect to show new language
+    titleIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+
+    // Save preference
+    localStorage.setItem('preferredLang', currentLang);
+}
+
+function updatePageLanguage() {
+    // Update all elements with data-es and data-en attributes
+    const translatableElements = document.querySelectorAll('[data-es][data-en]');
+
+    translatableElements.forEach(element => {
+        const text = element.getAttribute(`data-${currentLang}`);
+        if (text) {
+            element.textContent = text;
+        }
+    });
+
+    // Update placeholders for form inputs
+    const inputsWithPlaceholders = document.querySelectorAll('[data-placeholder-es][data-placeholder-en]');
+
+    inputsWithPlaceholders.forEach(input => {
+        const placeholder = input.getAttribute(`data-placeholder-${currentLang}`);
+        if (placeholder) {
+            input.placeholder = placeholder;
+        }
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLang;
+}
+
+function loadSavedLanguage() {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang && savedLang !== currentLang) {
+        toggleLanguage();
+    }
 }
 
 // ===== NAVBAR SCROLL EFFECT =====
@@ -137,6 +212,7 @@ function animateStatNumbers() {
         if (isElementInViewport(stat) && !stat.classList.contains('animated')) {
             stat.classList.add('animated');
             const target = parseInt(stat.getAttribute('data-target'));
+            const suffix = stat.getAttribute('data-suffix') || '';
             const duration = 2000;
             const step = target / (duration / 16);
             let current = 0;
@@ -147,7 +223,7 @@ function animateStatNumbers() {
                     stat.textContent = Math.floor(current);
                     requestAnimationFrame(updateCounter);
                 } else {
-                    stat.textContent = target;
+                    stat.textContent = target + suffix;
                 }
             };
 
@@ -206,22 +282,21 @@ function handleContactForm(e) {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData);
 
-    // Simulate form submission
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
 
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    const sendingText = currentLang === 'es' ? 'Enviando...' : 'Sending...';
+    const sentText = currentLang === 'es' ? 'Mensaje Enviado!' : 'Message Sent!';
+
+    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${sendingText}`;
     submitBtn.disabled = true;
 
-    // Simulate API call
     setTimeout(() => {
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Mensaje Enviado!';
+        submitBtn.innerHTML = `<i class="fas fa-check"></i> ${sentText}`;
         submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
 
-        // Reset form
         contactForm.reset();
 
-        // Reset button after delay
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.style.background = '';
@@ -254,7 +329,6 @@ function createParticles() {
         particlesContainer.appendChild(particle);
     }
 
-    // Add floating animation
     const style = document.createElement('style');
     style.textContent = `
         @keyframes float {
@@ -314,12 +388,10 @@ function initIntersectionObserver() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
 
-                // Animate skill bars when skills section is visible
                 if (entry.target.closest('.habilidades')) {
                     animateSkillBars();
                 }
 
-                // Animate stats when about section is visible
                 if (entry.target.closest('.sobre-mi')) {
                     animateStatNumbers();
                 }
@@ -327,7 +399,6 @@ function initIntersectionObserver() {
         });
     }, observerOptions);
 
-    // Observe elements
     document.querySelectorAll('.timeline-item, .project-card, .skills-category, .education-item, .certification-item, .sobre-mi-stats').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -337,7 +408,6 @@ function initIntersectionObserver() {
 // ===== KEYBOARD NAVIGATION =====
 function initKeyboardNavigation() {
     document.addEventListener('keydown', (e) => {
-        // Close mobile menu on Escape
         if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             closeMobileMenu();
         }
@@ -346,6 +416,9 @@ function initKeyboardNavigation() {
 
 // ===== INITIALIZE =====
 function init() {
+    // Load saved language preference
+    loadSavedLanguage();
+
     // Start typing effect
     if (typingText) {
         setTimeout(typeEffect, 1000);
@@ -385,6 +458,11 @@ function init() {
         backToTopBtn.addEventListener('click', scrollToTop);
     }
 
+    // Language toggle
+    if (langToggle) {
+        langToggle.addEventListener('click', toggleLanguage);
+    }
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -410,7 +488,6 @@ document.addEventListener('DOMContentLoaded', init);
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 
-    // Trigger initial animations
     setTimeout(() => {
         animateSkillBars();
         animateStatNumbers();

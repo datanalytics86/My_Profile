@@ -264,6 +264,46 @@ img {
     top: 8px;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--bg-tertiary);
+    border-radius: 25px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    margin-right: 1rem;
+}
+
+.lang-toggle:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.lang-flag {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.lang-text {
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .lang-toggle {
+        margin-right: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
 /* ===== HERO SECTION ===== */
 .hero {
     min-height: 100vh;
@@ -606,6 +646,15 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.job-project {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-style: italic;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--secondary-color);
 }
 
 .job-description {

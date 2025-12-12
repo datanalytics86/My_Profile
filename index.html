@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CV Profesional - Portfolio Online">
-    <title>Mi Perfil Profesional | CV Online</title>
+    <meta name="description" content="Nicolas Andrade - Chemical Engineer | Project Control & Management Professional">
+    <title>Nicolas Andrade | CV Profesional</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,19 +16,26 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
-                <span class="logo-text">&lt;MP/&gt;</span>
+                <span class="logo-text">&lt;NA/&gt;</span>
             </a>
+
+            <!-- Language Toggle -->
+            <button class="lang-toggle" id="lang-toggle" aria-label="Change language">
+                <span class="lang-flag">🇪🇸</span>
+                <span class="lang-text">ES</span>
+            </button>
+
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="#sobre-mi" class="nav-link">Sobre Mi</a></li>
-                <li class="nav-item"><a href="#experiencia" class="nav-link">Experiencia</a></li>
-                <li class="nav-item"><a href="#habilidades" class="nav-link">Habilidades</a></li>
-                <li class="nav-item"><a href="#proyectos" class="nav-link">Proyectos</a></li>
-                <li class="nav-item"><a href="#educacion" class="nav-link">Educacion</a></li>
-                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li class="nav-item"><a href="#inicio" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a></li>
+                <li class="nav-item"><a href="#sobre-mi" class="nav-link" data-es="Sobre Mi" data-en="About Me">Sobre Mi</a></li>
+                <li class="nav-item"><a href="#experiencia" class="nav-link" data-es="Experiencia" data-en="Experience">Experiencia</a></li>
+                <li class="nav-item"><a href="#habilidades" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+                <li class="nav-item"><a href="#proyectos" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+                <li class="nav-item"><a href="#educacion" class="nav-link" data-es="Educacion" data-en="Education">Educacion</a></li>
+                <li class="nav-item"><a href="#contacto" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a></li>
             </ul>
         </div>
     </nav>
@@ -40,36 +47,34 @@
         </div>
         <div class="hero-content">
             <div class="hero-text">
-                <p class="hero-greeting">Hola, soy</p>
-                <h1 class="hero-name">Tu Nombre</h1>
+                <p class="hero-greeting" data-es="Hola, soy" data-en="Hello, I'm">Hola, soy</p>
+                <h1 class="hero-name">Nicolas Andrade</h1>
                 <h2 class="hero-title">
                     <span class="typing-text" id="typing-text"></span>
                     <span class="cursor">|</span>
                 </h2>
-                <p class="hero-description">
-                    Profesional apasionado por la tecnologia y la innovacion.
-                    Transformando ideas en soluciones digitales.
+                <p class="hero-description"
+                   data-es="Ingeniero Quimico con Magister en Evaluacion y Direccion de Proyectos. Mas de 13 anos de experiencia liderando control y gestion de proyectos en los sectores minero, quimico e ingenieria."
+                   data-en="Chemical Engineer with a Master's in Project Evaluation and Management. Over 13 years of experience leading project control and management in the mining, chemical, and engineering sectors.">
+                    Ingeniero Quimico con Magister en Evaluacion y Direccion de Proyectos. Mas de 13 anos de experiencia liderando control y gestion de proyectos en los sectores minero, quimico e ingenieria.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contacto" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Contactame
+                        <i class="fas fa-paper-plane"></i> <span data-es="Contactame" data-en="Contact Me">Contactame</span>
                     </a>
-                    <a href="#proyectos" class="btn btn-secondary">
-                        <i class="fas fa-folder-open"></i> Ver Proyectos
+                    <a href="#experiencia" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> <span data-es="Ver Experiencia" data-en="View Experience">Ver Experiencia</span>
                     </a>
                 </div>
                 <div class="hero-social">
-                    <a href="https://linkedin.com/in/tuperfil" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" class="social-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/tuusuario" target="_blank" class="social-link" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://twitter.com/tuusuario" target="_blank" class="social-link" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="mailto:tucorreo@email.com" class="social-link" aria-label="Email">
+                    <a href="mailto:nandrade.socias@gmail.com" class="social-link" aria-label="Email">
                         <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+56987550637" class="social-link" aria-label="Phone">
+                        <i class="fas fa-phone"></i>
                     </a>
                 </div>
             </div>
@@ -82,7 +87,7 @@
                     </div>
                     <div class="profile-status">
                         <span class="status-dot"></span>
-                        Disponible para proyectos
+                        <span data-es="Disponible para proyectos" data-en="Available for projects">Disponible para proyectos</span>
                     </div>
                 </div>
             </div>
@@ -96,46 +101,45 @@
     <section class="section sobre-mi" id="sobre-mi">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">01.</span> Sobre Mi
+                <span class="title-number">01.</span> <span data-es="Sobre Mi" data-en="About Me">Sobre Mi</span>
             </h2>
             <div class="sobre-mi-content">
                 <div class="sobre-mi-text">
-                    <p>
-                        Soy un profesional con experiencia en desarrollo de software y tecnologias modernas.
-                        Mi pasion es crear soluciones innovadoras que generen impacto real en los usuarios
-                        y en los negocios.
+                    <p data-es="Ingeniero Quimico (USACH) con Magister en Evaluacion y Direccion de Proyectos (UAI) y mas de 13 anos de experiencia liderando control y gestion de proyectos en los sectores minero, quimico e ingenieria para empresas nacionales e internacionales."
+                       data-en="Chemical Engineer (USACH) holding a Master's in Project Evaluation and Management (UAI) and over 13 years of experience leading project control and management in the mining, chemical, and engineering sectors for both national and international companies.">
+                        Ingeniero Quimico (USACH) con Magister en Evaluacion y Direccion de Proyectos (UAI) y mas de 13 anos de experiencia liderando control y gestion de proyectos en los sectores minero, quimico e ingenieria para empresas nacionales e internacionales.
                     </p>
-                    <p>
-                        Con un enfoque en la calidad y las mejores practicas, he trabajado en diversos
-                        proyectos que van desde aplicaciones web hasta soluciones empresariales complejas.
+                    <p data-es="Experto en planificacion estrategica, control de costos, administracion de contratos y reporteria ejecutiva, con dominio de metodologias FEL, PMI y mejora continua (Kaizen). Reconocido por optimizar cronogramas y presupuestos en proyectos de alto CAPEX."
+                       data-en="Skilled in strategic planning, cost control, contract administration, and executive reporting, with expertise in FEL, PMI, and continuous improvement methodologies (Kaizen). Recognized for optimizing schedules and budgets in high-CAPEX projects.">
+                        Experto en planificacion estrategica, control de costos, administracion de contratos y reporteria ejecutiva, con dominio de metodologias FEL, PMI y mejora continua (Kaizen). Reconocido por optimizar cronogramas y presupuestos en proyectos de alto CAPEX.
                     </p>
-                    <p>
-                        Siempre estoy en constante aprendizaje, explorando nuevas tecnologias y metodologias
-                        que me permitan ofrecer mejores resultados.
+                    <p data-es="Desarrollo soluciones analiticas avanzadas en Power BI, SAP y Primavera P6, fortaleciendo la toma de decisiones ejecutivas. Lider orientado a resultados con fuertes capacidades analiticas, vision estrategica y habilidad probada para construir y liderar equipos de alto rendimiento."
+                       data-en="Developing advanced analytical solutions in Power BI, SAP, and Primavera P6, strengthening executive decision-making. Results-driven leader with strong analytical capabilities, strategic vision, and proven ability to build and lead high-performing teams.">
+                        Desarrollo soluciones analiticas avanzadas en Power BI, SAP y Primavera P6, fortaleciendo la toma de decisiones ejecutivas. Lider orientado a resultados con fuertes capacidades analiticas, vision estrategica y habilidad probada para construir y liderar equipos de alto rendimiento.
                     </p>
                     <div class="sobre-mi-stats">
                         <div class="stat-item">
-                            <span class="stat-number" data-target="5">0</span>
-                            <span class="stat-label">Anos de Experiencia</span>
+                            <span class="stat-number" data-target="13">0</span>
+                            <span class="stat-label" data-es="Anos de Experiencia" data-en="Years of Experience">Anos de Experiencia</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="20">0</span>
-                            <span class="stat-label">Proyectos Completados</span>
+                            <span class="stat-number" data-target="300" data-suffix="M">0</span>
+                            <span class="stat-label" data-es="USD en Portafolios" data-en="USD in Portfolios">USD en Portafolios</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="15">0</span>
-                            <span class="stat-label">Clientes Satisfechos</span>
+                            <span class="stat-number" data-target="4">0</span>
+                            <span class="stat-label" data-es="Empresas Lideradas" data-en="Companies Led">Empresas Lideradas</span>
                         </div>
                     </div>
                 </div>
                 <div class="sobre-mi-image">
                     <div class="tech-stack">
-                        <div class="tech-item"><i class="fab fa-js"></i></div>
-                        <div class="tech-item"><i class="fab fa-python"></i></div>
-                        <div class="tech-item"><i class="fab fa-react"></i></div>
-                        <div class="tech-item"><i class="fab fa-node-js"></i></div>
-                        <div class="tech-item"><i class="fab fa-docker"></i></div>
-                        <div class="tech-item"><i class="fab fa-aws"></i></div>
+                        <div class="tech-item" title="Power BI"><i class="fas fa-chart-bar"></i></div>
+                        <div class="tech-item" title="SAP"><i class="fas fa-database"></i></div>
+                        <div class="tech-item" title="Primavera P6"><i class="fas fa-project-diagram"></i></div>
+                        <div class="tech-item" title="Excel"><i class="fas fa-file-excel"></i></div>
+                        <div class="tech-item" title="Python"><i class="fab fa-python"></i></div>
+                        <div class="tech-item" title="MS Project"><i class="fas fa-tasks"></i></div>
                     </div>
                 </div>
             </div>
@@ -146,78 +150,170 @@
     <section class="section experiencia" id="experiencia">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">02.</span> Experiencia Profesional
+                <span class="title-number">02.</span> <span data-es="Experiencia Profesional" data-en="Professional Experience">Experiencia Profesional</span>
             </h2>
             <div class="timeline">
+                <!-- Capstone Copper -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3 class="job-title">Senior Developer</h3>
-                            <span class="job-company">@ Empresa Tech</span>
+                            <h3 class="job-title" data-es="Lider de Planificacion" data-en="Planning Lead">Lider de Planificacion</h3>
+                            <span class="job-company">@ Capstone Copper</span>
                         </div>
                         <p class="job-date">
-                            <i class="far fa-calendar-alt"></i> 2022 - Presente
+                            <i class="far fa-calendar-alt"></i> <span data-es="Ago 2023 - Presente" data-en="Aug 2023 - Present">Ago 2023 - Presente</span>
+                        </p>
+                        <p class="job-project" data-es="Proyecto Santo Domingo - USD 2.3B iniciativa de cobre, hierro y cobalto (etapa de factibilidad)"
+                           data-en="Santo Domingo Project - USD 2.3B copper, iron, and cobalt initiative (feasibility stage)">
+                            Proyecto Santo Domingo - USD 2.3B iniciativa de cobre, hierro y cobalto (etapa de factibilidad)
                         </p>
                         <ul class="job-description">
-                            <li>Desarrollo de aplicaciones web escalables utilizando React y Node.js</li>
-                            <li>Liderazgo tecnico de un equipo de 5 desarrolladores</li>
-                            <li>Implementacion de practicas DevOps y CI/CD</li>
-                            <li>Optimizacion de rendimiento que resulto en 40% de mejora</li>
+                            <li data-es="Reduci sobrecostos por modificaciones de contratos optimizando procesos de control de cambios y elevando estandares de calidad en RFQs"
+                                data-en="Reduced contract modification-related overruns by streamlining change control processes and elevating RFQ quality standards">
+                                Reduci sobrecostos por modificaciones de contratos optimizando procesos de control de cambios y elevando estandares de calidad en RFQs
+                            </li>
+                            <li data-es="Desarrolle dashboard interactivo en Power BI desde datos SAP, permitiendo evaluacion de proveedores basada en datos y acelerando decisiones de adquisiciones"
+                                data-en="Developed an interactive Power BI dashboard from SAP data, enabling data-driven supplier evaluation and accelerating procurement decision-making">
+                                Desarrolle dashboard interactivo en Power BI desde datos SAP, permitiendo evaluacion de proveedores basada en datos y acelerando decisiones de adquisiciones
+                            </li>
+                            <li data-es="Construi herramienta dinamica en Power BI vinculada al modelo CAPEX del proyecto, mejorando precision en monitoreo de presupuesto y analisis proactivo de variaciones"
+                                data-en="Built a dynamic Power BI tool linked to the project's CAPEX model, improving budget monitoring accuracy and enabling proactive variance analysis">
+                                Construi herramienta dinamica en Power BI vinculada al modelo CAPEX del proyecto, mejorando precision en monitoreo de presupuesto y analisis proactivo de variaciones
+                            </li>
+                            <li data-es="Lidere reporteria semanal y mensual para stakeholders del proyecto y corporativos, entregando actualizaciones de estado, cronogramas, costos y pronosticos"
+                                data-en="Led weekly and monthly reporting for project and corporate stakeholders, delivering updates on project status, schedules, costs, and forecasts">
+                                Lidere reporteria semanal y mensual para stakeholders del proyecto y corporativos, entregando actualizaciones de estado, cronogramas, costos y pronosticos
+                            </li>
                         </ul>
                         <div class="job-technologies">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">SAP PS</span>
+                            <span class="tech-tag">CAPEX Control</span>
+                            <span class="tech-tag">Mining</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- OXIQUIM -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3 class="job-title">Full Stack Developer</h3>
-                            <span class="job-company">@ Startup Innovadora</span>
+                            <h3 class="job-title" data-es="Jefe de Planificacion y Control de Gestion" data-en="Head of Planning and Management Control">Jefe de Planificacion y Control de Gestion</h3>
+                            <span class="job-company">@ OXIQUIM S.A</span>
                         </div>
                         <p class="job-date">
-                            <i class="far fa-calendar-alt"></i> 2020 - 2022
+                            <i class="far fa-calendar-alt"></i> <span data-es="May 2019 - Ago 2023" data-en="May 2019 - Aug 2023">May 2019 - Ago 2023</span>
+                        </p>
+                        <p class="job-project" data-es="Industria Quimica - Portafolio de proyectos USD 300M"
+                           data-en="Chemical Industry - USD 300M project portfolio">
+                            Industria Quimica - Portafolio de proyectos USD 300M
                         </p>
                         <ul class="job-description">
-                            <li>Desarrollo de MVP para plataforma de e-commerce</li>
-                            <li>Integracion de pasarelas de pago y APIs de terceros</li>
-                            <li>Diseno e implementacion de arquitectura de microservicios</li>
+                            <li data-es="Lidere y coordine esfuerzos de control y gestion de proyectos, construyendo y gestionando un equipo, supervisando procesos de cambio e implementando marcos de gobernanza"
+                                data-en="Led and coordinated project control and management efforts, building and managing a team, overseeing change processes, and implementing governance frameworks">
+                                Lidere y coordine esfuerzos de control y gestion de proyectos, construyendo y gestionando un equipo, supervisando procesos de cambio e implementando marcos de gobernanza
+                            </li>
+                            <li data-es="Implemente metodologia de seguimiento de portafolio (Pipeline - FEL 1 - FEL 2, etc.), reduciendo cambios injustificados de alcance del 50% al 10%"
+                                data-en="Implemented a portfolio tracking methodology across all project stages (Pipeline - FEL 1 - FEL 2, etc.), reducing unjustified scope changes from 50% to 10%">
+                                Implemente metodologia de seguimiento de portafolio (Pipeline - FEL 1 - FEL 2, etc.), reduciendo cambios injustificados de alcance del 50% al 10%
+                            </li>
+                            <li data-es="Introduje iniciativas de mejora continua usando metodologia Kaizen, apoyadas por tableros de gestion visual Lean"
+                                data-en="Introduced continuous improvement initiatives using Kaizen methodology, supported by Lean visual management boards">
+                                Introduje iniciativas de mejora continua usando metodologia Kaizen, apoyadas por tableros de gestion visual Lean
+                            </li>
+                            <li data-es="Desarrolle solucion Power BI integrando SAP PS y Excel para gestionar portafolio de USD 300M, controlar contratos, generar reportes de flujo de caja y controlar pronosticos"
+                                data-en="Developed a Power BI solution integrating SAP PS and Excel to manage a USD 300M portfolio, track contracts, generate cash flow reports, and control forecasts">
+                                Desarrolle solucion Power BI integrando SAP PS y Excel para gestionar portafolio de USD 300M, controlar contratos, generar reportes de flujo de caja y controlar pronosticos
+                            </li>
                         </ul>
                         <div class="job-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">SAP PS</span>
+                            <span class="tech-tag">Kaizen</span>
+                            <span class="tech-tag">FEL</span>
+                            <span class="tech-tag">Lean</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- GHD -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3 class="job-title">Junior Developer</h3>
-                            <span class="job-company">@ Consultora Digital</span>
+                            <h3 class="job-title" data-es="Coordinador PMO" data-en="PMO Coordinator">Coordinador PMO</h3>
+                            <span class="job-company">@ GHD S.A</span>
                         </div>
                         <p class="job-date">
-                            <i class="far fa-calendar-alt"></i> 2018 - 2020
+                            <i class="far fa-calendar-alt"></i> <span data-es="Nov 2015 - May 2019" data-en="Nov 2015 - May 2019">Nov 2015 - May 2019</span>
+                        </p>
+                        <p class="job-project" data-es="Servicios de Ingenieria - Portafolio de proyectos USD 50M"
+                           data-en="Engineering Services - USD 50M project portfolio">
+                            Servicios de Ingenieria - Portafolio de proyectos USD 50M
                         </p>
                         <ul class="job-description">
-                            <li>Desarrollo de sitios web responsivos para clientes</li>
-                            <li>Mantenimiento y actualizacion de aplicaciones legacy</li>
-                            <li>Colaboracion en proyectos agiles con equipos multidisciplinarios</li>
+                            <li data-es="Gestione portafolio de proyectos de USD 50M, supervisando costos, avances y cronogramas para asegurar alineacion con objetivos de negocio"
+                                data-en="Managed a USD 50M project portfolio, overseeing costs, progress, and schedules to ensure alignment with business objectives">
+                                Gestione portafolio de proyectos de USD 50M, supervisando costos, avances y cronogramas para asegurar alineacion con objetivos de negocio
+                            </li>
+                            <li data-es="Preveni sobrecostos en mas del 30% de proyectos introduciendo nuevos KPIs de desempeño, fortaleciendo planes de mitigacion y reingenieria de procesos de control"
+                                data-en="Prevented cost overruns in over 30% of projects by introducing new performance KPIs, strengthening mitigation plans, and reengineering control processes">
+                                Preveni sobrecostos en mas del 30% de proyectos introduciendo nuevos KPIs de desempeño, fortaleciendo planes de mitigacion y reingenieria de procesos de control
+                            </li>
+                            <li data-es="Controle metricas financieras incluyendo flujo de caja, pronosticos (ETC & EAC), WIP, EBIT y niveles de deuda"
+                                data-en="Controlled financial metrics including cash flow, forecasts (ETC & EAC), WIP, EBIT, and debt levels">
+                                Controle metricas financieras incluyendo flujo de caja, pronosticos (ETC & EAC), WIP, EBIT y niveles de deuda
+                            </li>
+                            <li data-es="Coordine con equipos en Canada, Tailandia, Sudafrica y Europa para gestionar facturacion intercompañia y asignar recursos entre multiples sitios"
+                                data-en="Coordinated with teams in Canada, Thailand, South Africa, and Europe to manage intercompany billing and allocate resources across multiple sites">
+                                Coordine con equipos en Canada, Tailandia, Sudafrica y Europa para gestionar facturacion intercompañia y asignar recursos entre multiples sitios
+                            </li>
                         </ul>
                         <div class="job-technologies">
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">PMO</span>
+                            <span class="tech-tag">ETC/EAC</span>
+                            <span class="tech-tag">KPIs</span>
+                            <span class="tech-tag">Global Teams</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inconsult -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="job-title" data-es="Ingeniero PMO - Jefe de Programacion y Control" data-en="PMO Engineer - Head of Scheduling and Control">Ingeniero PMO - Jefe de Programacion y Control</h3>
+                            <span class="job-company">@ Inconsult Ltda.</span>
+                        </div>
+                        <p class="job-date">
+                            <i class="far fa-calendar-alt"></i> <span data-es="Ene 2012 - Nov 2015" data-en="Jan 2012 - Nov 2015">Ene 2012 - Nov 2015</span>
+                        </p>
+                        <p class="job-project" data-es="Proyectos de fundicion de cobre para Codelco, AngloAmerican Chagres y Glencore Altonorte"
+                           data-en="Copper smelting projects for Codelco, AngloAmerican Chagres, and Glencore Altonorte">
+                            Proyectos de fundicion de cobre para Codelco, AngloAmerican Chagres y Glencore Altonorte
+                        </p>
+                        <ul class="job-description">
+                            <li data-es="Progrese de Ingeniero de Control de Proyectos a Jefe de Departamento, supervisando control de proyectos de fundicion de cobre para grandes clientes mineros"
+                                data-en="Progressed from Project Control Engineer to Department Head, overseeing project control for copper smelting projects for major mining clients">
+                                Progrese de Ingeniero de Control de Proyectos a Jefe de Departamento, supervisando control de proyectos de fundicion de cobre para grandes clientes mineros
+                            </li>
+                            <li data-es="Gestione presupuestos CAPEX de aproximadamente USD 50M, asegurando control de costos, cumplimiento de cronograma y mitigacion de riesgos"
+                                data-en="Managed CAPEX budgets of approximately USD 50M, ensuring cost control, schedule compliance, and risk mitigation">
+                                Gestione presupuestos CAPEX de aproximadamente USD 50M, asegurando control de costos, cumplimiento de cronograma y mitigacion de riesgos
+                            </li>
+                            <li data-es="Lidere el establecimiento de la PMO de la empresa, implementando Sistema de Gestion de Calidad segun ISO 9001 y metodologia PMI"
+                                data-en="Led the establishment of the company's PMO, implementing a Quality Management System in accordance with ISO 9001 and PMI methodology">
+                                Lidere el establecimiento de la PMO de la empresa, implementando Sistema de Gestion de Calidad segun ISO 9001 y metodologia PMI
+                            </li>
+                        </ul>
+                        <div class="job-technologies">
+                            <span class="tech-tag">PMI</span>
+                            <span class="tech-tag">ISO 9001</span>
+                            <span class="tech-tag">Primavera P6</span>
+                            <span class="tech-tag">Mining</span>
                         </div>
                     </div>
                 </div>
@@ -229,93 +325,50 @@
     <section class="section habilidades" id="habilidades">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">03.</span> Habilidades
+                <span class="title-number">03.</span> <span data-es="Habilidades" data-en="Skills">Habilidades</span>
             </h2>
             <div class="skills-container">
                 <div class="skills-category">
                     <h3 class="category-title">
-                        <i class="fas fa-code"></i> Frontend
+                        <i class="fas fa-chart-line"></i> <span data-es="Analisis de Datos & BI" data-en="Data Analysis & BI">Analisis de Datos & BI</span>
                     </h3>
                     <div class="skills-grid">
                         <div class="skill-item" data-skill="95">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <span class="skill-name">HTML5</span>
+                            <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+                            <span class="skill-name">Power BI</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
-                        <div class="skill-item" data-skill="90">
-                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                            <span class="skill-name">CSS3/SASS</span>
+                        <div class="skill-item" data-skill="95">
+                            <div class="skill-icon"><i class="fas fa-file-excel"></i></div>
+                            <span class="skill-name">Excel (Power Query/Pivot)</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
-                        <div class="skill-item" data-skill="88">
-                            <div class="skill-icon"><i class="fab fa-js"></i></div>
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-skill="85">
-                            <div class="skill-icon"><i class="fab fa-react"></i></div>
-                            <span class="skill-name">React</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-skill="80">
-                            <div class="skill-icon"><i class="fab fa-vuejs"></i></div>
-                            <span class="skill-name">Vue.js</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-server"></i> Backend
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="85">
-                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-                            <span class="skill-name">Node.js</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-skill="82">
+                        <div class="skill-item" data-skill="60">
                             <div class="skill-icon"><i class="fab fa-python"></i></div>
                             <span class="skill-name">Python</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
-                        <div class="skill-item" data-skill="75">
-                            <div class="skill-icon"><i class="fab fa-java"></i></div>
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-skill="78">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <span class="skill-name">SQL/NoSQL</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="skills-category">
                     <h3 class="category-title">
-                        <i class="fas fa-tools"></i> DevOps & Tools
+                        <i class="fas fa-project-diagram"></i> <span data-es="Gestion de Proyectos" data-en="Project Management">Gestion de Proyectos</span>
                     </h3>
                     <div class="skills-grid">
-                        <div class="skill-item" data-skill="80">
-                            <div class="skill-icon"><i class="fab fa-docker"></i></div>
-                            <span class="skill-name">Docker</span>
+                        <div class="skill-item" data-skill="90">
+                            <div class="skill-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <span class="skill-name">Primavera P6</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
-                        <div class="skill-item" data-skill="75">
-                            <div class="skill-icon"><i class="fab fa-aws"></i></div>
-                            <span class="skill-name">AWS</span>
+                        <div class="skill-item" data-skill="90">
+                            <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                            <span class="skill-name">MS Project</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
-                        <div class="skill-item" data-skill="88">
-                            <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                            <span class="skill-name">Git</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-skill="70">
-                            <div class="skill-icon"><i class="fas fa-dharmachakra"></i></div>
-                            <span class="skill-name">Kubernetes</span>
+                        <div class="skill-item" data-skill="85">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <span class="skill-name">SAP Project System (PS)</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
                     </div>
@@ -323,32 +376,60 @@
 
                 <div class="skills-category">
                     <h3 class="category-title">
-                        <i class="fas fa-lightbulb"></i> Soft Skills
+                        <i class="fas fa-tools"></i> <span data-es="Metodologias & Herramientas" data-en="Methodologies & Tools">Metodologias & Herramientas</span>
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="90">
+                            <div class="skill-icon"><i class="fas fa-sitemap"></i></div>
+                            <span class="skill-name">PMI / PMBOK</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                        <div class="skill-item" data-skill="85">
+                            <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+                            <span class="skill-name">FEL Methodology</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                        <div class="skill-item" data-skill="80">
+                            <div class="skill-icon"><i class="fas fa-sync-alt"></i></div>
+                            <span class="skill-name">Kaizen / Lean</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                        <div class="skill-item" data-skill="75">
+                            <div class="skill-icon"><i class="fas fa-dice"></i></div>
+                            <span class="skill-name">@Risk / Crystal Ball</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-lightbulb"></i> <span data-es="Competencias Clave" data-en="Key Competencies">Competencias Clave</span>
                     </h3>
                     <div class="soft-skills-grid">
                         <div class="soft-skill-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span data-es="Control de Costos" data-en="Cost Control">Control de Costos</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-file-contract"></i>
+                            <span data-es="Admin. Contratos" data-en="Contract Admin">Admin. Contratos</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-chess"></i>
+                            <span data-es="Planificacion Estrategica" data-en="Strategic Planning">Planificacion Estrategica</span>
+                        </div>
+                        <div class="soft-skill-item">
                             <i class="fas fa-users"></i>
-                            <span>Trabajo en Equipo</span>
+                            <span data-es="Liderazgo de Equipos" data-en="Team Leadership">Liderazgo de Equipos</span>
                         </div>
                         <div class="soft-skill-item">
-                            <i class="fas fa-comments"></i>
-                            <span>Comunicacion</span>
+                            <i class="fas fa-chart-pie"></i>
+                            <span data-es="Reporteria Ejecutiva" data-en="Executive Reporting">Reporteria Ejecutiva</span>
                         </div>
                         <div class="soft-skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Resolucion de Problemas</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Gestion del Tiempo</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-sync-alt"></i>
-                            <span>Adaptabilidad</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-rocket"></i>
-                            <span>Proactividad</span>
+                            <i class="fas fa-language"></i>
+                            <span data-es="Ingles B2" data-en="English B2">Ingles B2</span>
                         </div>
                     </div>
                 </div>
@@ -356,138 +437,120 @@
         </div>
     </section>
 
-    <!-- Proyectos -->
+    <!-- Proyectos Destacados -->
     <section class="section proyectos" id="proyectos">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">04.</span> Proyectos Destacados
+                <span class="title-number">04.</span> <span data-es="Proyectos Destacados" data-en="Featured Projects">Proyectos Destacados</span>
             </h2>
             <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn active" data-filter="all" data-es="Todos" data-en="All">Todos</button>
+                <button class="filter-btn" data-filter="mining" data-es="Mineria" data-en="Mining">Mineria</button>
+                <button class="filter-btn" data-filter="chemical" data-es="Quimica" data-en="Chemical">Quimica</button>
+                <button class="filter-btn" data-filter="bi" data-es="BI & Analytics" data-en="BI & Analytics">BI & Analytics</button>
             </div>
             <div class="projects-grid">
-                <article class="project-card" data-category="web">
+                <article class="project-card" data-category="mining">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Ver demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Ver codigo">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fas fa-mountain"></i>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-description">
-                            Plataforma de comercio electronico completa con carrito de compras,
-                            pasarela de pagos y panel de administracion.
+                        <h3 class="project-title">Santo Domingo Project</h3>
+                        <p class="project-description"
+                           data-es="Proyecto de cobre, hierro y cobalto de USD 2.3B en etapa de factibilidad. Liderando planificacion y control de costos para Capstone Copper."
+                           data-en="USD 2.3B copper, iron, and cobalt project in feasibility stage. Leading planning and cost control for Capstone Copper.">
+                            Proyecto de cobre, hierro y cobalto de USD 2.3B en etapa de factibilidad. Liderando planificacion y control de costos para Capstone Copper.
                         </p>
                         <div class="project-technologies">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Stripe</span>
+                            <span>Power BI</span>
+                            <span>SAP</span>
+                            <span>CAPEX</span>
                         </div>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="mobile">
+                <article class="project-card" data-category="bi">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Ver demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Ver codigo">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                            <i class="fas fa-chart-bar"></i>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Task Manager App</h3>
-                        <p class="project-description">
-                            Aplicacion movil para gestion de tareas con sincronizacion en tiempo real
-                            y notificaciones push.
+                        <h3 class="project-title" data-es="Dashboard Portafolio USD 300M" data-en="USD 300M Portfolio Dashboard">Dashboard Portafolio USD 300M</h3>
+                        <p class="project-description"
+                           data-es="Solucion Power BI integrando SAP PS y Excel para gestionar portafolio de proyectos, contratos, flujo de caja y pronosticos en OXIQUIM."
+                           data-en="Power BI solution integrating SAP PS and Excel to manage project portfolio, contracts, cash flow, and forecasts at OXIQUIM.">
+                            Solucion Power BI integrando SAP PS y Excel para gestionar portafolio de proyectos, contratos, flujo de caja y pronosticos en OXIQUIM.
                         </p>
                         <div class="project-technologies">
-                            <span>React Native</span>
-                            <span>Firebase</span>
-                            <span>Redux</span>
+                            <span>Power BI</span>
+                            <span>SAP PS</span>
+                            <span>Excel</span>
                         </div>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="backend">
+                <article class="project-card" data-category="chemical">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Ver demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Ver codigo">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fas fa-flask"></i>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">API REST Microservicios</h3>
-                        <p class="project-description">
-                            Arquitectura de microservicios escalable con autenticacion JWT,
-                            rate limiting y documentacion OpenAPI.
+                        <h3 class="project-title" data-es="Metodologia FEL en OXIQUIM" data-en="FEL Methodology at OXIQUIM">Metodologia FEL en OXIQUIM</h3>
+                        <p class="project-description"
+                           data-es="Implementacion de metodologia de seguimiento de portafolio por etapas FEL, reduciendo cambios injustificados de alcance del 50% al 10%."
+                           data-en="Implementation of FEL stage-gate portfolio tracking methodology, reducing unjustified scope changes from 50% to 10%.">
+                            Implementacion de metodologia de seguimiento de portafolio por etapas FEL, reduciendo cambios injustificados de alcance del 50% al 10%.
                         </p>
                         <div class="project-technologies">
-                            <span>Python</span>
-                            <span>FastAPI</span>
-                            <span>Docker</span>
-                            <span>Redis</span>
+                            <span>FEL</span>
+                            <span>Kaizen</span>
+                            <span>Lean</span>
                         </div>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="web">
+                <article class="project-card" data-category="mining">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Ver demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Ver codigo">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <i class="fas fa-industry"></i>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Dashboard Analytics</h3>
-                        <p class="project-description">
-                            Panel de control interactivo con visualizaciones de datos en tiempo real
-                            y reportes automatizados.
+                        <h3 class="project-title" data-es="Proyectos Fundicion Codelco" data-en="Codelco Smelting Projects">Proyectos Fundicion Codelco</h3>
+                        <p class="project-description"
+                           data-es="Control de proyectos de fundicion de cobre para Codelco (DET, DSAL, DCH), AngloAmerican y Glencore. Presupuestos CAPEX de ~USD 50M."
+                           data-en="Project control for copper smelting projects for Codelco (DET, DSAL, DCH), AngloAmerican, and Glencore. CAPEX budgets of ~USD 50M.">
+                            Control de proyectos de fundicion de cobre para Codelco (DET, DSAL, DCH), AngloAmerican y Glencore. Presupuestos CAPEX de ~USD 50M.
                         </p>
                         <div class="project-technologies">
-                            <span>Vue.js</span>
-                            <span>D3.js</span>
-                            <span>GraphQL</span>
-                            <span>PostgreSQL</span>
+                            <span>Primavera P6</span>
+                            <span>PMI</span>
+                            <span>ISO 9001</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="bi">
+                    <div class="project-image">
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title" data-es="KPIs de Prevencion de Sobrecostos" data-en="Cost Overrun Prevention KPIs">KPIs de Prevencion de Sobrecostos</h3>
+                        <p class="project-description"
+                           data-es="Sistema de KPIs de desempeño que previno sobrecostos en mas del 30% de proyectos en GHD, con reingenieria de procesos de control."
+                           data-en="Performance KPI system that prevented cost overruns in over 30% of projects at GHD, with reengineering of control processes.">
+                            Sistema de KPIs de desempeño que previno sobrecostos en mas del 30% de proyectos en GHD, con reingenieria de procesos de control.
+                        </p>
+                        <div class="project-technologies">
+                            <span>KPIs</span>
+                            <span>ETC/EAC</span>
+                            <span>PMO</span>
                         </div>
                     </div>
                 </article>
@@ -499,85 +562,118 @@
     <section class="section educacion" id="educacion">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">05.</span> Educacion y Certificaciones
+                <span class="title-number">05.</span> <span data-es="Educacion y Formacion" data-en="Education & Training">Educacion y Formacion</span>
             </h2>
             <div class="education-container">
                 <div class="education-column">
                     <h3 class="education-subtitle">
-                        <i class="fas fa-graduation-cap"></i> Formacion Academica
+                        <i class="fas fa-graduation-cap"></i> <span data-es="Formacion Academica" data-en="Academic Background">Formacion Academica</span>
                     </h3>
                     <div class="education-item">
                         <div class="education-icon">
                             <i class="fas fa-university"></i>
                         </div>
                         <div class="education-content">
-                            <h4>Ingenieria en Sistemas Computacionales</h4>
-                            <p class="education-institution">Universidad Tecnologica</p>
-                            <p class="education-date">2014 - 2018</p>
-                            <p class="education-description">
-                                Graduado con honores. Especializado en desarrollo de software
-                                y arquitectura de sistemas.
-                            </p>
+                            <h4 data-es="Magister en Evaluacion y Direccion de Proyectos" data-en="Master's Degree in Project Evaluation and Management">Magister en Evaluacion y Direccion de Proyectos</h4>
+                            <p class="education-institution">Universidad Adolfo Ibanez</p>
+                            <p class="education-date">2023</p>
                         </div>
                     </div>
                     <div class="education-item">
                         <div class="education-icon">
-                            <i class="fas fa-book"></i>
+                            <i class="fas fa-certificate"></i>
                         </div>
                         <div class="education-content">
-                            <h4>Master en Ciencias de la Computacion</h4>
-                            <p class="education-institution">Instituto de Tecnologia</p>
-                            <p class="education-date">2019 - 2021</p>
-                            <p class="education-description">
-                                Enfoque en inteligencia artificial y machine learning.
-                            </p>
+                            <h4 data-es="Diplomado en Evaluacion de Proyectos" data-en="Graduate Diploma in Project Evaluation">Diplomado en Evaluacion de Proyectos</h4>
+                            <p class="education-institution">Universidad Adolfo Ibanez</p>
+                            <p class="education-date">2022</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="education-content">
+                            <h4 data-es="Diplomado en Gestion de Proyectos" data-en="Graduate Diploma in Project Management">Diplomado en Gestion de Proyectos</h4>
+                            <p class="education-institution">Universidad Adolfo Ibanez</p>
+                            <p class="education-date">2015</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="education-content">
+                            <h4 data-es="Ingenieria Civil Quimica" data-en="Bachelor's Degree in Chemical Engineering">Ingenieria Civil Quimica</h4>
+                            <p class="education-institution">Universidad de Santiago de Chile</p>
+                            <p class="education-date">2012</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="education-column">
                     <h3 class="education-subtitle">
-                        <i class="fas fa-certificate"></i> Certificaciones
+                        <i class="fas fa-book"></i> <span data-es="Capacitaciones" data-en="Training">Capacitaciones</span>
                     </h3>
                     <div class="certifications-grid">
                         <div class="certification-item">
                             <div class="cert-icon">
-                                <i class="fab fa-aws"></i>
+                                <i class="fab fa-python"></i>
                             </div>
                             <div class="cert-info">
-                                <h4>AWS Solutions Architect</h4>
-                                <p>Amazon Web Services</p>
+                                <h4 data-es="Analisis de Datos con Python" data-en="Data Analysis with Python">Analisis de Datos con Python</h4>
+                                <p>CreceData</p>
+                                <span class="cert-date" data-es="En Progreso" data-en="In Progress">En Progreso</span>
+                            </div>
+                        </div>
+                        <div class="certification-item">
+                            <div class="cert-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="cert-info">
+                                <h4>Power BI</h4>
+                                <p>CreceData</p>
                                 <span class="cert-date">2023</span>
                             </div>
                         </div>
                         <div class="certification-item">
                             <div class="cert-icon">
-                                <i class="fab fa-google"></i>
+                                <i class="fas fa-database"></i>
                             </div>
                             <div class="cert-info">
-                                <h4>Professional Cloud Developer</h4>
-                                <p>Google Cloud</p>
+                                <h4>Star Schema, Power Query & Power BI</h4>
+                                <p>Udemy</p>
                                 <span class="cert-date">2022</span>
                             </div>
                         </div>
                         <div class="certification-item">
                             <div class="cert-icon">
-                                <i class="fab fa-microsoft"></i>
+                                <i class="fas fa-calendar-alt"></i>
                             </div>
                             <div class="cert-info">
-                                <h4>Azure Developer Associate</h4>
-                                <p>Microsoft</p>
-                                <span class="cert-date">2022</span>
+                                <h4>Primavera P6</h4>
+                                <p>Metacontrol</p>
+                                <span class="cert-date">2017</span>
                             </div>
                         </div>
                         <div class="certification-item">
                             <div class="cert-icon">
-                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-tasks"></i>
                             </div>
                             <div class="cert-info">
-                                <h4>Certified Kubernetes Administrator</h4>
-                                <p>CNCF</p>
-                                <span class="cert-date">2023</span>
+                                <h4 data-es="Planificacion y Control de Proyectos" data-en="Project Planning & Control">Planificacion y Control de Proyectos</h4>
+                                <p>PUC Chile</p>
+                                <span class="cert-date">2014</span>
+                            </div>
+                        </div>
+                        <div class="certification-item">
+                            <div class="cert-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="cert-info">
+                                <h4 data-es="Sistemas de Gestion de Calidad ISO 9001" data-en="ISO 9001 Quality Management Systems">Sistemas de Gestion de Calidad ISO 9001</h4>
+                                <p>Bureau Veritas</p>
+                                <span class="cert-date">2013</span>
                             </div>
                         </div>
                     </div>
@@ -590,61 +686,54 @@
     <section class="section contacto" id="contacto">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-number">06.</span> Contacto
+                <span class="title-number">06.</span> <span data-es="Contacto" data-en="Contact">Contacto</span>
             </h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Hablemos!</h3>
-                    <p>
-                        Estoy interesado en oportunidades freelance y posiciones full-time.
-                        Si tienes un proyecto en mente o simplemente quieres saludar,
-                        no dudes en contactarme!
+                    <h3 data-es="Hablemos!" data-en="Let's Talk!">Hablemos!</h3>
+                    <p data-es="Estoy interesado en oportunidades de liderazgo en control de proyectos y gestion. Si tienes un proyecto en mente o buscas un profesional para tu equipo, no dudes en contactarme."
+                       data-en="I'm interested in leadership opportunities in project control and management. If you have a project in mind or are looking for a professional for your team, don't hesitate to contact me.">
+                        Estoy interesado en oportunidades de liderazgo en control de proyectos y gestion. Si tienes un proyecto en mente o buscas un profesional para tu equipo, no dudes en contactarme.
                     </p>
                     <div class="contact-methods">
-                        <a href="mailto:tucorreo@email.com" class="contact-method">
+                        <a href="mailto:nandrade.socias@gmail.com" class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <span>tucorreo@email.com</span>
+                            <span>nandrade.socias@gmail.com</span>
                         </a>
-                        <a href="tel:+1234567890" class="contact-method">
+                        <a href="tel:+56987550637" class="contact-method">
                             <i class="fas fa-phone"></i>
-                            <span>+1 234 567 890</span>
+                            <span>+56 9 8755 0637</span>
                         </a>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Ciudad, Pais</span>
+                            <span>Las Condes, Santiago, Chile</span>
                         </div>
                     </div>
                     <div class="contact-social">
-                        <a href="https://linkedin.com/in/tuperfil" target="_blank" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/tuusuario" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com/tuusuario" target="_blank" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                        <label for="name" data-es="Nombre" data-en="Name">Nombre</label>
+                        <input type="text" id="name" name="name" required data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        <input type="email" id="email" name="email" required data-placeholder-es="tu@email.com" data-placeholder-en="your@email.com" placeholder="tu@email.com">
                     </div>
                     <div class="form-group">
-                        <label for="subject">Asunto</label>
-                        <input type="text" id="subject" name="subject" required placeholder="Asunto del mensaje">
+                        <label for="subject" data-es="Asunto" data-en="Subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" required data-placeholder-es="Asunto del mensaje" data-placeholder-en="Message subject" placeholder="Asunto del mensaje">
                     </div>
                     <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Tu mensaje..."></textarea>
+                        <label for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required data-placeholder-es="Tu mensaje..." data-placeholder-en="Your message..." placeholder="Tu mensaje..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-submit">
-                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                        <i class="fas fa-paper-plane"></i> <span data-es="Enviar Mensaje" data-en="Send Message">Enviar Mensaje</span>
                     </button>
                 </form>
             </div>
@@ -656,16 +745,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <span>&lt;MP/&gt;</span>
+                    <span>&lt;NA/&gt;</span>
                 </div>
                 <p class="footer-text">
-                    Disenado y desarrollado con <i class="fas fa-heart"></i> | 2024
+                    <span data-es="Disenado y desarrollado con" data-en="Designed and developed with">Disenado y desarrollado con</span> <i class="fas fa-heart"></i> | 2024
                 </p>
                 <div class="footer-links">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#sobre-mi">Sobre Mi</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#contacto">Contacto</a>
+                    <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+                    <a href="#sobre-mi" data-es="Sobre Mi" data-en="About">Sobre Mi</a>
+                    <a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                    <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
                 </div>
             </div>
         </div>
