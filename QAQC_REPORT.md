@@ -1,43 +1,28 @@
 # Informe QA/QC del repositorio `My_Profile`
 
 ## Contexto
-El repositorio actualmente solo contiene un archivo `README.md` vacío de contenido útil. No hay código fuente, configuraciones de construcción, automatizaciones ni documentación adicional. El análisis se centra en identificar vacíos de control de calidad y proponer pasos para habilitar un flujo de QA/QC básico.
+El repositorio ahora cuenta con una base en Python para perfilar profesionales, pruebas unitarias, linting y un flujo de CI. Persisten algunos vacíos menores para garantizar reproducibilidad completa en entornos con red restringida y cobertura reforzada.
 
-## Hallazgos
-- **Estructura de proyecto inexistente**: No hay directorios para código fuente, pruebas ni recursos compartidos, lo que impide aplicar controles de calidad automatizados.
-- **Ausencia de documentación técnica**: El `README.md` no describe objetivos, requisitos previos, instrucciones de uso ni lineamientos de contribución.
-- **Sin control de dependencias**: No hay archivos de gestión de dependencias (por ejemplo, `package.json`, `requirements.txt`, `pyproject.toml`) ni bloqueo de versiones.
-- **Falta de pruebas automatizadas**: No se incluyen suites de pruebas unitarias, de integración o de regresión, ni configuración de herramientas de cobertura.
-- **Carencia de linters/formatters**: No hay configuración de linting o formateo (p. ej., ESLint, Prettier, Flake8, Black), lo que limita la consistencia del código.
-- **Sin integración continua**: No existe pipeline de CI para ejecutar validaciones automáticas en cada cambio (p. ej., GitHub Actions, GitLab CI, CircleCI).
-- **Gestión de calidad no documentada**: No hay políticas de revisión de código, definición de criterios de aceptación ni checklist de QA/QC.
+## Hallazgos actualizados
+- **Estructura y código**: Existe módulo principal (`src/my_profile/profile.py`) con validaciones y pruebas completas en `tests/`, todas pasando localmente.
+- **Dependencias**: Versiones fijas en `requirements.txt`, pero la instalación puede fallar tras un proxy (errores 403/404) impidiendo obtener `black`/`pytest-cov` y, por ende, `pytest --cov` no reconoce argumentos.
+- **Cobertura**: La configuración de CI exige `--cov-fail-under=90`, coherente con el objetivo de calidad, pero depende de contar con `pytest-cov` instalado.
+- **Documentación**: README y política de QA/QC actualizados; el reporte previo mencionaba ausencia de estructura, lo cual ya no aplica.
+- **Automatización**: CI en `.github/workflows/ci.yml` ejecuta lint, formateo y pruebas; no hay chequeos de tipos ni auditoría de seguridad.
 
 ## Evaluación de riesgo
-- **Riesgo alto de regresiones** al no existir pruebas automatizadas ni CI.
-- **Riesgo de inconsistencias** de estilo y convenciones por falta de linters y guías de contribución.
-- **Riesgo de onboarding lento** debido a documentación insuficiente y ausencia de instrucciones de configuración.
+- **Riesgo medio de reproducibilidad** por instalaciones bloqueadas (proxy) que generan errores `NOT_FOUND` al resolver dependencias y deshabilitan comandos con cobertura.
+- **Riesgo bajo de regresiones** mientras se mantengan las pruebas actuales; podría mitigarse más con tipos estáticos.
+- **Riesgo medio de cumplimiento** si la cobertura no se puede medir en entornos sin acceso a paquetes.
 
 ## Recomendaciones
-1. **Definir el objetivo del proyecto** y documentarlo en `README.md`, incluyendo alcance, requisitos y cómo ejecutar o desplegar.
-2. **Establecer estructura de carpetas** acorde al stack elegido (por ejemplo, `src/`, `tests/`, `docs/`).
-3. **Gestionar dependencias y versiones** con el gestor apropiado e incluir archivos de bloqueo.
-4. **Implementar pruebas automatizadas** (unitarias e integración) con la herramienta estándar del lenguaje elegido; añadir cobertura mínima requerida.
-5. **Configurar linters y formatters** y documentar comandos de verificación y formateo.
-6. **Agregar CI/CD** para ejecutar lint, pruebas y verificación de formato en cada push/PR.
-7. **Definir políticas de QA/QC**: checklist de revisión, estándares de documentación, y criterios de aceptación por tipo de cambio.
-8. **Mantener versionado semántico y changelog** para registrar cambios y facilitar trazabilidad.
+1. **Asegurar dependencias en entornos restringidos**: predescargar/wheel de `black` y `pytest-cov` o usar un mirror interno para evitar errores 403/404 durante `pip install`.
+2. **Degradar con gracia la cobertura**: documentar alternativa `pytest` simple cuando `pytest-cov` no esté disponible, manteniendo la meta de cobertura en CI cuando sí se tenga red.
+3. **Añadir chequeo estático**: integrar `mypy` u otra herramienta ligera en el workflow para fortalecer QA.
+4. **Auditoría de dependencias**: incorporar `pip-audit` o similar en CI cuando las restricciones de red lo permitan.
+5. **Seguimiento de métricas**: generar reportes de cobertura (HTML/XML) en CI para revisar tendencias.
 
-## Ejecución de mejoras
-- Se creó una estructura inicial en Python (`src/`, `tests/`) con un módulo de perfil profesional y pruebas unitarias con cobertura >90%.
-- Se incorporaron linters y formatters (`ruff`, `black`) configurados en `pyproject.toml`.
-- Se añadieron dependencias versionadas en `requirements.txt` y gestión de herramientas centralizada.
-- Se habilitó CI en `.github/workflows/ci.yml` para ejecutar lint + formateo + pruebas en cada push/PR.
-- Se documentaron estándares de QA/QC y checklist en `docs/QA_QC_POLICY.md` y guía completa en `README.md`.
-- Se abrió `CHANGELOG.md` siguiendo versionado semántico (v0.1.0).
-
-## Próximos pasos sugeridos (ordenados)
-1. Extender las funcionalidades del módulo según requerimientos reales manteniendo cobertura ≥90%.
-2. Publicar artefactos (p. ej., paquete en PyPI privado) si se necesita distribución.
-3. Añadir análisis estático adicional (mypy) y pruebas de integración conforme crezca el alcance.
-4. Configurar revisión de seguridad de dependencias (p. ej., `pip-audit` o `pip-tools`).
-5. Incorporar plantillas de PR y issue para reforzar la checklist de QA/QC.
+## Ejecución reciente
+- Estructura Python, pruebas unitarias y linters configurados.
+- Workflow de CI listo para `ruff`, `black --check` y `pytest --cov` cuando las dependencias están disponibles.
+- Documentación y checklist alineados con el estado actual del proyecto.

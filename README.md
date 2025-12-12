@@ -40,6 +40,8 @@ black --check src tests
 ruff check src tests
 
 # Pruebas con cobertura mínima del 90%
+# Nota: requiere tener instalado `pytest-cov`; en entornos sin acceso a Internet
+# usa `pytest` simple y reporta la ausencia de cobertura.
 pytest --cov=src --cov-report=term-missing --cov-fail-under=90
 ```
 

@@ -7,6 +7,7 @@ Este documento define los controles mínimos de calidad para el repositorio.
 - [ ] Formateo verificado con `black --check`.
 - [ ] Lint completado con `ruff check` sin errores.
 - [ ] Pruebas ejecutadas con `pytest --cov=src --cov-report=term-missing --cov-fail-under=90`.
+      - En entornos sin `pytest-cov` disponible (por restricciones de red), ejecutar `pytest` y documentar la limitación.
 - [ ] Documentación (README y comentarios) actualizada cuando aplica.
 - [ ] Nombres de funciones y variables claros y autoexplicativos.
 - [ ] Se evitan dependencias no utilizadas o duplicadas.
