@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My_Profile – Resumen</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --panel: #1e293b;
+      --accent: #38bdf8;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #111827);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .card {
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      max-width: 960px;
+      width: 100%;
+      padding: 28px 32px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: 0.5px;
+    }
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      margin: 6px 6px 0 0;
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .panel {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .panel h2 {
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+    code, .mono {
+      font-family: "JetBrains Mono", SFMono-Regular, ui-monospace, monospace;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    a { color: #7dd3fc; }
+    @media (max-width: 640px) { body { padding: 18px 12px; } .card { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Resumen del proyecto My_Profile">
+    <h1>My_Profile</h1>
+    <p>Repositorio base para definir y mantener un perfil profesional reproducible con utilidades de Python y controles de QA/QC. Abre este archivo directamente o sirve el directorio con <code>python -m http.server</code> para ver esta vista.</p>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Estado</h2>
+        <p class="mono">Módulo <code>my_profile.profile.Profile</code> con validaciones + pruebas unitarias.</p>
+        <p class="mono">Flujo CI: <code>ruff</code>, <code>black --check</code>, <code>pytest</code>.</p>
+      </section>
+      <section class="panel">
+        <h2>Uso rápido</h2>
+        <p>Ejecuta el ejemplo:</p>
+        <pre><code>python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python - &lt;&lt;'PY'
+from my_profile.profile import Profile
+perfil = Profile(
+    nombre="Ada Lovelace",
+    rol="Pionera de la programación",
+    habilidades=["Matemática", "Algoritmos", "Documentación"],
+    ubicacion="Londres, Reino Unido",
+)
+print(perfil.resumen())
+PY</code></pre>
+      </section>
+      <section class="panel">
+        <h2>Calidad</h2>
+        <p>Comandos principales:</p>
+        <p><code>ruff check src tests</code><br><code>black --check src tests</code><br><code>pytest --cov=src --cov-report=term-missing --cov-fail-under=90</code></p>
+        <p>Si no se dispone de <code>pytest-cov</code>, usar <code>pytest</code> simple y reportar la limitación.</p>
+      </section>
+    </div>
+
+    <div style="margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;">
+      <a class="pill" href="README.md">README</a>
+      <a class="pill" href="CHANGELOG.md">Changelog</a>
+      <a class="pill" href="QAQC_REPORT.md">Informe QA/QC</a>
+      <a class="pill" href="docs/QA_QC_POLICY.md">Política QA/QC</a>
+    </div>
+
+    <p class="footer">Si ves esta página en un sitio publicado y obtienes 404, asegúrate de que el artefacto <code>index.html</code> se haya desplegado en la raíz (por ejemplo, GitHub Pages desde la rama principal).</p>
+  </main>
+</body>
+</html>
