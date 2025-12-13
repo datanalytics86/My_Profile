@@ -15,10 +15,10 @@ const langToggle = document.getElementById('lang-toggle');
 // ===== LANGUAGE STATE =====
 let currentLang = 'es';
 
-// ===== TYPING EFFECT - BILINGUAL =====
+// ===== PROFESSIONAL TITLES - BILINGUAL =====
 const titlesES = [
-    'Ingeniero Quimico',
-    'Lider de Planificacion',
+    'Ingeniero Químico',
+    'Líder de Planificación',
     'Especialista en Control de Proyectos',
     'Experto en Power BI & SAP'
 ];
@@ -32,33 +32,31 @@ const titlesEN = [
 
 let titles = titlesES;
 let titleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
 
-function typeEffect() {
-    const currentTitle = titles[titleIndex];
+// ===== SIMPLE TITLE ROTATION (No typing effect - more executive) =====
+function rotateTitles() {
+    if (!typingText) return;
 
-    if (isDeleting) {
-        typingText.textContent = currentTitle.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
-    } else {
-        typingText.textContent = currentTitle.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
-    }
+    // Fade out
+    typingText.style.opacity = '0';
 
-    if (!isDeleting && charIndex === currentTitle.length) {
-        isDeleting = true;
-        typingSpeed = 2000;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
+    setTimeout(() => {
         titleIndex = (titleIndex + 1) % titles.length;
-        typingSpeed = 500;
-    }
+        typingText.textContent = titles[titleIndex];
+        // Fade in
+        typingText.style.opacity = '1';
+    }, 400);
+}
 
-    setTimeout(typeEffect, typingSpeed);
+function initTitleRotation() {
+    if (!typingText) return;
+
+    // Set initial title
+    typingText.textContent = titles[0];
+    typingText.style.transition = 'opacity 0.4s ease';
+
+    // Rotate every 4 seconds
+    setInterval(rotateTitles, 4000);
 }
 
 // ===== LANGUAGE TOGGLE =====
@@ -82,10 +80,10 @@ function toggleLanguage() {
     // Update all translatable elements
     updatePageLanguage();
 
-    // Reset typing effect to show new language
-    titleIndex = 0;
-    charIndex = 0;
-    isDeleting = false;
+    // Update current title immediately
+    if (typingText) {
+        typingText.textContent = titles[titleIndex];
+    }
 
     // Save preference
     localStorage.setItem('preferredLang', currentLang);
@@ -187,7 +185,6 @@ function filterProjects(category) {
 
         if (category === 'all' || cardCategory === category) {
             card.classList.remove('hidden');
-            card.style.animation = 'fadeIn 0.5s ease forwards';
         } else {
             card.classList.add('hidden');
         }
@@ -206,39 +203,14 @@ function animateSkillBars() {
     });
 }
 
-// ===== STAT COUNTER ANIMATION =====
-function animateStatNumbers() {
+// ===== STAT COUNTER - SIMPLE (No animation for executive look) =====
+function displayStatNumbers() {
     statNumbers.forEach(stat => {
-        if (isElementInViewport(stat) && !stat.classList.contains('animated')) {
-            stat.classList.add('animated');
+        if (!stat.classList.contains('displayed')) {
+            stat.classList.add('displayed');
             const target = parseInt(stat.getAttribute('data-target'));
             const suffix = stat.getAttribute('data-suffix') || '';
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += step;
-                if (current < target) {
-                    stat.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    stat.textContent = target + suffix;
-                }
-            };
-
-            updateCounter();
-        }
-    });
-}
-
-// ===== FADE IN ON SCROLL =====
-function handleFadeInElements() {
-    const fadeElements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .education-item, .certification-item');
-
-    fadeElements.forEach(element => {
-        if (isElementInViewport(element)) {
-            element.classList.add('visible');
+            stat.textContent = target + suffix;
         }
     });
 }
@@ -286,14 +258,14 @@ function handleContactForm(e) {
     const originalText = submitBtn.innerHTML;
 
     const sendingText = currentLang === 'es' ? 'Enviando...' : 'Sending...';
-    const sentText = currentLang === 'es' ? 'Mensaje Enviado!' : 'Message Sent!';
+    const sentText = currentLang === 'es' ? 'Mensaje Enviado' : 'Message Sent';
 
-    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${sendingText}`;
+    submitBtn.innerHTML = sendingText;
     submitBtn.disabled = true;
 
     setTimeout(() => {
-        submitBtn.innerHTML = `<i class="fas fa-check"></i> ${sentText}`;
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        submitBtn.innerHTML = sentText;
+        submitBtn.style.background = '#10b981';
 
         contactForm.reset();
 
@@ -307,76 +279,7 @@ function handleContactForm(e) {
     console.log('Form data:', data);
 }
 
-// ===== PARTICLES BACKGROUND =====
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    if (!particlesContainer) return;
-
-    const particleCount = 50;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: absolute;
-            width: ${Math.random() * 5 + 2}px;
-            height: ${Math.random() * 5 + 2}px;
-            background: rgba(99, 102, 241, ${Math.random() * 0.5 + 0.1});
-            border-radius: 50%;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation: float ${Math.random() * 10 + 10}s linear infinite;
-        `;
-        particlesContainer.appendChild(particle);
-    }
-
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
-                opacity: 0;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// ===== THEME TOGGLE (BONUS) =====
-function initThemeToggle() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-    }
-}
-
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-}
-
-// ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+// ===== INTERSECTION OBSERVER FOR SUBTLE FADE-IN =====
 function initIntersectionObserver() {
     const observerOptions = {
         threshold: 0.1,
@@ -388,12 +291,14 @@ function initIntersectionObserver() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
 
+                // Animate skill bars when skills section is visible
                 if (entry.target.closest('.habilidades')) {
                     animateSkillBars();
                 }
 
+                // Display stat numbers when about section is visible
                 if (entry.target.closest('.sobre-mi')) {
-                    animateStatNumbers();
+                    displayStatNumbers();
                 }
             }
         });
@@ -419,22 +324,14 @@ function init() {
     // Load saved language preference
     loadSavedLanguage();
 
-    // Start typing effect
-    if (typingText) {
-        setTimeout(typeEffect, 1000);
-    }
-
-    // Create particles
-    createParticles();
+    // Start title rotation (replaces typing effect)
+    initTitleRotation();
 
     // Initialize smooth scroll
     initSmoothScroll();
 
-    // Initialize intersection observer
+    // Initialize intersection observer for fade-in effects
     initIntersectionObserver();
-
-    // Initialize theme
-    initThemeToggle();
 
     // Initialize keyboard navigation
     initKeyboardNavigation();
@@ -484,12 +381,13 @@ function init() {
 // ===== RUN ON DOM READY =====
 document.addEventListener('DOMContentLoaded', init);
 
-// ===== PRELOADER (OPTIONAL) =====
+// ===== ON LOAD =====
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 
+    // Initialize skill bars and stats after short delay
     setTimeout(() => {
         animateSkillBars();
-        animateStatNumbers();
-    }, 500);
+        displayStatNumbers();
+    }, 300);
 });
