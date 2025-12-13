@@ -1,0 +1,23 @@
+[
+  {
+    "year": "2024",
+    "impact": "USD 2.3B",
+    "title": "Control integrado y tableros SAP · Proyecto Santo Domingo",
+    "description": "Lideré control de cambios y reportes corporativos, conectando SAP PS con dashboards Power BI para evaluar proveedores y CAPEX en tiempo real.",
+    "skills": ["SAP PS", "Power BI", "Change control"]
+  },
+  {
+    "year": "2023",
+    "impact": "300M USD portafolio",
+    "title": "PMO y trazabilidad de portafolio · OXIQUIM",
+    "description": "Implementé método FEL, reporting de forecast y gobernanza de contratos para proyectos químicos y logísticos, reduciendo cambios injustificados de 50% a 10%.",
+    "skills": ["FEL", "Forecast", "RFQ"]
+  },
+  {
+    "year": "2018",
+    "impact": "+30% control",
+    "title": "KPIs y mitigación temprana · GHD proyectos mineros",
+    "description": "Desplegué indicadores de valor ganado y gestión de riesgos para portafolio multi-país de USD 50M, evitando sobrecostos y retrasos críticos.",
+    "skills": ["EVM", "Riesgo", "Primavera P6"]
+  }
+]

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor ejecutivo | Perfil Nicolás Andrade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="cms-body">
+    <div class="global-background" aria-hidden="true"></div>
+    <header class="cms-header">
+        <div>
+            <p class="cms-badge">Panel privado</p>
+            <h1>Editor de contenido</h1>
+            <p>Actualiza textos y datasets del sitio sin tocar el código.</p>
+        </div>
+        <div class="cms-actions">
+            <a class="btn btn--ghost" href="./index.html">Ver landing</a>
+            <button class="btn btn--primary" id="logout-btn" type="button">Salir</button>
+        </div>
+    </header>
+
+    <main class="cms-main">
+        <section class="cms-card" id="login-card">
+            <h2>Acceso</h2>
+            <p>Ingresa con tu usuario y contraseña para editar el perfil.</p>
+            <form id="login-form" class="cms-form">
+                <label>
+                    Usuario
+                    <input type="text" name="username" required>
+                </label>
+                <label>
+                    Contraseña
+                    <input type="password" name="password" required>
+                </label>
+                <button class="btn btn--primary" type="submit">Entrar</button>
+                <p class="cms-helper">Las credenciales se validan en el navegador y nunca se envían a servidores externos.</p>
+            </form>
+        </section>
+
+        <section class="cms-card cms-card--qa" id="qa-card" hidden>
+            <div class="qa-header">
+                <div>
+                    <p class="cms-badge">QA/QC</p>
+                    <h2>Salud del panel</h2>
+                    <p>Verifica login, integridad de datasets y overrides antes de publicar.</p>
+                </div>
+                <div class="cms-actions">
+                    <button class="btn btn--secondary" type="button" id="run-healthcheck">Revalidar</button>
+                    <button class="btn btn--ghost" type="button" id="export-config">Exportar respaldo</button>
+                </div>
+            </div>
+            <div class="qa-grid">
+                <div class="qa-pill" id="qa-session">
+                    <p class="qa-label">Sesión</p>
+                    <p class="qa-value">Cerrada</p>
+                    <p class="qa-meta">Accede para habilitar edición</p>
+                </div>
+                <div class="qa-pill" id="qa-texts">
+                    <p class="qa-label">Textos</p>
+                    <p class="qa-value">Sin overrides</p>
+                    <p class="qa-meta">Usando contenido del repositorio</p>
+                </div>
+                <div class="qa-pill" id="qa-skills">
+                    <p class="qa-label">Habilidades</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+                <div class="qa-pill" id="qa-achievements">
+                    <p class="qa-label">Logros</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+                <div class="qa-pill" id="qa-projects">
+                    <p class="qa-label">Proyectos</p>
+                    <p class="qa-value">-</p>
+                    <p class="qa-meta">Pendiente de validación</p>
+                </div>
+            </div>
+            <p class="cms-helper">El healthcheck revisa que existan campos obligatorios, niveles numéricos y fechas de guardado recientes.</p>
+        </section>
+
+        <section class="cms-card cms-card--grid" id="editor-card" hidden>
+            <div>
+                <h2>Identidad y contacto</h2>
+                <p>Personaliza los textos principales y CTA.</p>
+                <form id="identity-form" class="cms-form cms-form--grid">
+                    <label>Nombre completo<input type="text" name="name"></label>
+                    <label>Rol / badge<input type="text" name="role"></label>
+                    <label>Título navegación<input type="text" name="navLogo"></label>
+                    <label>Subtítulo hero<textarea name="subtitle" rows="2"></textarea></label>
+                    <label>Ubicación y lenguas<input type="text" name="location"></label>
+                    <label>Experiencia resumen<input type="text" name="experience"></label>
+                    <label>Propuesta de valor<textarea name="valueProposition" rows="3"></textarea></label>
+                    <label>Correo de contacto<input type="email" name="email"></label>
+                    <label>Teléfono<input type="text" name="phone"></label>
+                    <label>LinkedIn (URL completa)<input type="url" name="linkedin"></label>
+                    <label>CV (ruta o URL)<input type="url" name="cvUrl"></label>
+                </form>
+                <h3>Resumen ejecutivo</h3>
+                <form id="summary-form" class="cms-form cms-form--grid">
+                    <label>Eyebrow<input type="text" name="summaryEyebrow"></label>
+                    <label>Encabezado<textarea name="summaryHeadline" rows="2"></textarea></label>
+                    <label>Párrafo principal<textarea name="summaryParagraph" rows="3"></textarea></label>
+                    <label>Highlight 1 título<input type="text" name="highlight1Title"></label>
+                    <label>Highlight 1 detalle<textarea name="highlight1Desc" rows="2"></textarea></label>
+                    <label>Highlight 2 título<input type="text" name="highlight2Title"></label>
+                    <label>Highlight 2 detalle<textarea name="highlight2Desc" rows="2"></textarea></label>
+                    <label>Highlight 3 título<input type="text" name="highlight3Title"></label>
+                    <label>Highlight 3 detalle<textarea name="highlight3Desc" rows="2"></textarea></label>
+                </form>
+                <h3>Métricas hero</h3>
+                <form id="metrics-form" class="cms-form cms-form--grid cms-form--compact">
+                    <label>Métrica 1 valor<input type="text" name="metric1Value"></label>
+                    <label>Métrica 1 texto<textarea name="metric1Label" rows="2"></textarea></label>
+                    <label>Métrica 2 valor<input type="text" name="metric2Value"></label>
+                    <label>Métrica 2 texto<textarea name="metric2Label" rows="2"></textarea></label>
+                    <label>Métrica 3 valor<input type="text" name="metric3Value"></label>
+                    <label>Métrica 3 texto<textarea name="metric3Label" rows="2"></textarea></label>
+                </form>
+                <div class="cms-actions">
+                    <button class="btn btn--primary" id="save-texts" type="button">Guardar textos</button>
+                </div>
+            </div>
+            <div>
+                <h2>Datasets dinámicos</h2>
+                <p>Edita las grillas que consumen JSON.</p>
+                <form id="data-form" class="cms-form">
+                    <label>Habilidades (JSON)
+                        <textarea name="skills" rows="8" spellcheck="false"></textarea>
+                    </label>
+                    <label>Logros (JSON)
+                        <textarea name="achievements" rows="8" spellcheck="false"></textarea>
+                    </label>
+                    <label>Proyectos (JSON)
+                        <textarea name="projects" rows="8" spellcheck="false"></textarea>
+                    </label>
+                </form>
+                <div class="cms-actions">
+                    <button class="btn btn--secondary" id="save-datasets" type="button">Guardar datasets</button>
+                    <button class="btn btn--ghost" id="reset-overrides" type="button">Reiniciar a valores del repositorio</button>
+                </div>
+                <p class="cms-helper">Los cambios se guardan en <strong>localStorage</strong>. Si borras la caché del navegador, volverás a ver el contenido del repositorio.</p>
+            </div>
+        </section>
+
+        <div class="cms-status" id="cms-status" role="status" aria-live="polite"></div>
+    </main>
+
+    <script>
+        const ADMIN_USER = 'nicolas';
+        const ADMIN_PASS = 'andrade2025';
+        const STORAGE_KEYS = {
+            OVERRIDES: 'siteOverrides',
+            SKILLS: 'skillsData',
+            ACHIEVEMENTS: 'achievementsData',
+            PROJECTS: 'projectsData',
+            SESSION: 'cmsSession',
+            META: 'cmsMeta'
+        };
+
+        const BASE_TEXTS = {
+            name: 'Nicolás Andrade Socías',
+            role: 'Planning Lead · Project Controls',
+            navLogo: 'Nicolás Andrade',
+            subtitle: 'Ingeniero químico y PMO que conecta control de costos, cronogramas y analítica para blindar proyectos mineros y químicos de alto CAPEX.',
+            location: 'Santiago de Chile · Español / Inglés',
+            experience: '13+ años liderando planificación, costos y reporting ejecutivo',
+            valueProposition: 'Orquesto planificación, costos, contratos y dashboards para que la dirección tome decisiones con visibilidad total de riesgos, plazos y CAPEX.',
+            email: 'nandrade.socias@gmail.com',
+            phone: '+56 9 8755 0637',
+            linkedin: 'https://www.linkedin.com/in/nicolas-ignacio-andrade-socias-95538128',
+            cvUrl: 'assets/docs/CV_Nicolas_Andrade_Resume_2025.pdf',
+            summaryEyebrow: 'Resumen ejecutivo',
+            summaryHeadline: 'Control de proyectos de clase mundial con foco en CAPEX y gobernanza',
+            summaryParagraph: 'Ingeniero químico con Máster en Evaluación y Gestión de Proyectos. Lidero planificación, costos, contratos y reportes ejecutivos para proyectos mineros y químicos de alto CAPEX, integrando SAP, Power BI, Primavera P6 y metodologías FEL/PMI. Genero visibilidad temprana de riesgos y decisiones accionables para la alta dirección.',
+            highlight1Title: 'Gobernanza integral',
+            highlight1Desc: 'Establezco PMO, control de cambios y reporting consolidado para dirección y comité de proyectos.',
+            highlight2Title: 'Analítica accionable',
+            highlight2Desc: 'Despliego dashboards SAP/Power BI con variaciones, riesgos y KPIs de proveedores y contratos.',
+            highlight3Title: 'Liderazgo de equipos',
+            highlight3Desc: 'Formo células de control de proyectos, entreno en Kaizen visual y elevo la disciplina de planificación.',
+            metric1Value: 'USD 2.3B',
+            metric1Label: 'Proyecto Santo Domingo gestionado con control de cambios y reporting conectado a SAP',
+            metric2Value: 'USD 300M',
+            metric2Label: 'Portafolio dirigido con método FEL, gobierno contractual y forecast',
+            metric3Value: '6/7',
+            metric3Label: 'Nivel en SAP PS, Power BI, Primavera P6 y control de costos'
+        };
+
+        const loginCard = document.getElementById('login-card');
+        const qaCard = document.getElementById('qa-card');
+        const editorCard = document.getElementById('editor-card');
+        const loginForm = document.getElementById('login-form');
+        const identityForm = document.getElementById('identity-form');
+        const summaryForm = document.getElementById('summary-form');
+        const metricsForm = document.getElementById('metrics-form');
+        const dataForm = document.getElementById('data-form');
+        const saveTextsBtn = document.getElementById('save-texts');
+        const saveDatasetsBtn = document.getElementById('save-datasets');
+        const resetBtn = document.getElementById('reset-overrides');
+        const statusBox = document.getElementById('cms-status');
+        const logoutBtn = document.getElementById('logout-btn');
+        const runHealthcheckBtn = document.getElementById('run-healthcheck');
+        const exportBtn = document.getElementById('export-config');
+
+        const qaPills = {
+            session: document.getElementById('qa-session'),
+            texts: document.getElementById('qa-texts'),
+            skills: document.getElementById('qa-skills'),
+            achievements: document.getElementById('qa-achievements'),
+            projects: document.getElementById('qa-projects')
+        };
+
+        let cachedDatasets = null;
+
+        const safeParse = (value) => {
+            try { return JSON.parse(value); } catch (e) { return null; }
+        };
+
+        const showStatus = (message, tone = 'info') => {
+            statusBox.textContent = message;
+            statusBox.dataset.tone = tone;
+        };
+
+        const loadOverrides = () => safeParse(localStorage.getItem(STORAGE_KEYS.OVERRIDES)) || {};
+
+        const setFormValues = () => {
+            const overrides = loadOverrides();
+            [...identityForm.elements, ...summaryForm.elements, ...metricsForm.elements].forEach(field => {
+                if (!field.name) return;
+                field.value = overrides[field.name] ?? BASE_TEXTS[field.name] ?? '';
+            });
+        };
+
+        const loadDatasets = async () => {
+            const overrides = {
+                skills: safeParse(localStorage.getItem(STORAGE_KEYS.SKILLS)),
+                achievements: safeParse(localStorage.getItem(STORAGE_KEYS.ACHIEVEMENTS)),
+                projects: safeParse(localStorage.getItem(STORAGE_KEYS.PROJECTS))
+            };
+
+            const fillWith = async (key, path) => {
+                if (overrides[key]) return { data: overrides[key], source: 'local' };
+                try {
+                    const res = await fetch(path);
+                    const json = await res.json();
+                    return { data: json, source: 'repo' };
+                } catch (e) {
+                    return { data: [], source: 'error' };
+                }
+            };
+
+            const datasets = await Promise.all([
+                fillWith('skills', 'assets/data/skills.json'),
+                fillWith('achievements', 'assets/data/achievements.json'),
+                fillWith('projects', 'assets/data/projects.json')
+            ]);
+
+            const [skills, achievements, projects] = datasets;
+
+            dataForm.elements.skills.value = JSON.stringify(skills.data || [], null, 2);
+            dataForm.elements.achievements.value = JSON.stringify(achievements.data || [], null, 2);
+            dataForm.elements.projects.value = JSON.stringify(projects.data || [], null, 2);
+
+            cachedDatasets = { skills, achievements, projects };
+            return cachedDatasets;
+        };
+
+        const formatDate = (isoString) => {
+            if (!isoString) return 'Sin registro';
+            const date = new Date(isoString);
+            return date.toLocaleString('es-CL', { dateStyle: 'medium', timeStyle: 'short' });
+        };
+
+        const getMeta = () => safeParse(localStorage.getItem(STORAGE_KEYS.META)) || {};
+
+        const setMeta = (payload) => {
+            const next = { ...getMeta(), ...payload };
+            localStorage.setItem(STORAGE_KEYS.META, JSON.stringify(next));
+        };
+
+        const setPillState = (pill, { state = 'neutral', value = '-', meta = '' }) => {
+            pill.dataset.state = state;
+            pill.querySelector('.qa-value').textContent = value;
+            pill.querySelector('.qa-meta').textContent = meta;
+        };
+
+        const validateArray = (data, requiredKeys = [], customCheck, minLength = 1) => {
+            if (!Array.isArray(data)) return { ok: false, detail: 'No es un arreglo' };
+            const missing = data.find(item => requiredKeys.some(key => !(key in item)));
+            if (missing) return { ok: false, detail: 'Faltan campos obligatorios' };
+            if (data.length < minLength) return { ok: false, detail: 'Sin registros detectados' };
+            if (customCheck) {
+                const result = customCheck(data);
+                if (result !== true) return { ok: false, detail: result };
+            }
+            return { ok: true, detail: `Registros: ${data.length}` };
+        };
+
+        const runHealthcheck = async () => {
+            const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+            setPillState(qaPills.session, {
+                state: sessionOpen ? 'ok' : 'warn',
+                value: sessionOpen ? 'Sesión activa' : 'Sesión cerrada',
+                meta: sessionOpen ? 'Puedes editar y guardar cambios' : 'Inicia sesión para editar'
+            });
+
+            const overrides = loadOverrides();
+            const hasOverrides = Object.keys(overrides).length > 0;
+            const meta = getMeta();
+            setPillState(qaPills.texts, {
+                state: hasOverrides ? 'ok' : 'neutral',
+                value: hasOverrides ? 'Overrides activos' : 'Texto base',
+                meta: hasOverrides ? `Guardado: ${formatDate(meta.textsSavedAt)}` : 'Sin overrides en localStorage'
+            });
+
+            const { skills, achievements, projects } = cachedDatasets || await loadDatasets();
+            const validations = {
+                skills: validateArray(
+                    skills.data,
+                    ['name', 'level', 'scale'],
+                    (entries) => entries.some(item => typeof item.level !== 'number' || typeof item.scale !== 'number')
+                        ? 'Nivel/escala deben ser numéricos'
+                        : true,
+                    3
+                ),
+                achievements: validateArray(achievements.data, ['title', 'description'], null, 1),
+                projects: validateArray(projects.data, ['title', 'description'], null, 1)
+            };
+
+            const apply = (key, label) => {
+                const check = validations[key];
+                const bundle = cachedDatasets?.[key] || { skills, achievements, projects }[key];
+                const source = bundle?.source || 'repo';
+                const state = check.ok ? 'ok' : (bundle?.source === 'error' ? 'error' : 'warn');
+                setPillState(qaPills[key], {
+                    state,
+                    value: check.ok ? `${label}: ${bundle?.data?.length ?? 0}` : 'Revisar JSON',
+                    meta: check.ok ? `Fuente: ${source === 'local' ? 'LocalStorage' : source === 'repo' ? 'Repositorio' : 'Error'}` : check.detail
+                });
+            };
+
+            apply('skills', 'Habilidades');
+            apply('achievements', 'Logros');
+            apply('projects', 'Proyectos');
+        };
+
+        const guardSession = async () => {
+            localStorage.setItem(STORAGE_KEYS.SESSION, 'true');
+            loginCard.hidden = true;
+            editorCard.hidden = false;
+            qaCard.hidden = false;
+            setFormValues();
+            await loadDatasets();
+            showStatus('Sesión iniciada. Ajusta los campos y guarda para ver los cambios.', 'success');
+            runHealthcheck();
+        };
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(loginForm);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            if (username === ADMIN_USER && password === ADMIN_PASS) {
+                await guardSession();
+            } else {
+                showStatus('Credenciales incorrectas. Intenta nuevamente.', 'error');
+            }
+        });
+
+        saveTextsBtn.addEventListener('click', () => {
+            const combined = {};
+            [identityForm, summaryForm, metricsForm].forEach(form => {
+                [...form.elements].forEach(field => {
+                    if (field.name) combined[field.name] = field.value.trim();
+                });
+            });
+            localStorage.setItem(STORAGE_KEYS.OVERRIDES, JSON.stringify(combined));
+            setMeta({ textsSavedAt: new Date().toISOString() });
+            showStatus('Textos guardados. Recarga la landing para verlos aplicados.', 'success');
+            runHealthcheck();
+        });
+
+        saveDatasetsBtn.addEventListener('click', () => {
+            try {
+                const skills = JSON.parse(dataForm.elements.skills.value || '[]');
+                const achievements = JSON.parse(dataForm.elements.achievements.value || '[]');
+                const projects = JSON.parse(dataForm.elements.projects.value || '[]');
+
+                localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(skills));
+                localStorage.setItem(STORAGE_KEYS.ACHIEVEMENTS, JSON.stringify(achievements));
+                localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(projects));
+                cachedDatasets = {
+                    skills: { data: skills, source: 'local' },
+                    achievements: { data: achievements, source: 'local' },
+                    projects: { data: projects, source: 'local' }
+                };
+                setMeta({ datasetsSavedAt: new Date().toISOString() });
+
+                showStatus('Datasets guardados. Recarga la landing para ver las grillas actualizadas.', 'success');
+                runHealthcheck();
+            } catch (e) {
+                showStatus('Revisa el formato JSON antes de guardar.', 'error');
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            localStorage.removeItem(STORAGE_KEYS.OVERRIDES);
+            localStorage.removeItem(STORAGE_KEYS.SKILLS);
+            localStorage.removeItem(STORAGE_KEYS.ACHIEVEMENTS);
+            localStorage.removeItem(STORAGE_KEYS.PROJECTS);
+            localStorage.removeItem(STORAGE_KEYS.META);
+            showStatus('Overrides eliminados. La landing usará el contenido del repositorio.', 'info');
+            setFormValues();
+            loadDatasets();
+            runHealthcheck();
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem(STORAGE_KEYS.SESSION);
+            loginCard.hidden = false;
+            editorCard.hidden = true;
+            qaCard.hidden = true;
+            showStatus('Sesión cerrada. Vuelve a ingresar tus credenciales.', 'info');
+        });
+
+        runHealthcheckBtn.addEventListener('click', () => {
+            runHealthcheck();
+            showStatus('Healthcheck ejecutado.', 'info');
+        });
+
+        exportBtn.addEventListener('click', () => {
+            try {
+                const payload = {
+                    texts: loadOverrides(),
+                    datasets: {
+                        skills: safeParse(dataForm.elements.skills.value || '[]'),
+                        achievements: safeParse(dataForm.elements.achievements.value || '[]'),
+                        projects: safeParse(dataForm.elements.projects.value || '[]')
+                    },
+                    meta: getMeta()
+                };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'admin-backup.json';
+                link.click();
+                URL.revokeObjectURL(url);
+                showStatus('Backup exportado en JSON.', 'success');
+            } catch (e) {
+                showStatus('No se pudo exportar el backup.', 'error');
+            }
+        });
+
+        const resumeSession = async () => {
+            const sessionOpen = localStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+            if (!sessionOpen) {
+                runHealthcheck();
+                return;
+            }
+
+            try {
+                await guardSession();
+                showStatus('Sesión restaurada. Continúa editando con tus overrides activos.', 'success');
+            } catch (error) {
+                localStorage.removeItem(STORAGE_KEYS.SESSION);
+                showStatus('No se pudo restaurar la sesión. Ingresa nuevamente para editar.', 'info');
+                runHealthcheck();
+            }
+        };
+
+        resumeSession();
+    </script>
+</body>
+</html>
