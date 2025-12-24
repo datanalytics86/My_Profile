@@ -706,8 +706,7 @@ ul {
 }
 
 .timeline-header {
-    position: sticky;
-    top: 120px;
+    position: relative;
 }
 
 .job-title {
