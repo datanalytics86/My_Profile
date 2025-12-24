@@ -2,12 +2,12 @@
 /* Inspired by McKinsey, BCG, Bain - Minimal & Sophisticated */
 
 :root {
-    /* Primary Palette - Deep Navy & Warm Accents */
-    --primary-dark: #1a1f36;
-    --primary-navy: #2d3748;
-    --accent-copper: #b8860b;
-    --accent-copper-light: #d4a84b;
-    --accent-copper-subtle: rgba(184, 134, 11, 0.08);
+    /* Primary Palette - Refined & Sophisticated */
+    --primary-dark: #1c1c1e;
+    --primary-navy: #2c2c2e;
+    --accent-copper: #64748b;
+    --accent-copper-light: #94a3b8;
+    --accent-copper-subtle: rgba(100, 116, 139, 0.06);
 
     /* Neutral Grays - Sophisticated Scale */
     --gray-900: #1a202c;
@@ -340,7 +340,7 @@ ul {
     right: 0;
     width: 60%;
     height: 100%;
-    background: radial-gradient(ellipse at 70% 30%, rgba(184, 134, 11, 0.06) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 70% 30%, rgba(100, 116, 139, 0.04) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -351,7 +351,7 @@ ul {
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(184, 134, 11, 0.3) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.2) 50%, transparent 100%);
 }
 
 .hero-background,
@@ -484,7 +484,7 @@ ul {
     height: 240px;
     overflow: hidden;
     margin-bottom: 2rem;
-    border: 1.5px solid rgba(184, 134, 11, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
@@ -539,8 +539,8 @@ ul {
     transform: translateX(-50%);
     width: 1px;
     height: 60px;
-    background: linear-gradient(180deg, var(--accent-copper) 0%, transparent 100%);
-    opacity: 0.4;
+    background: linear-gradient(180deg, var(--gray-400) 0%, transparent 100%);
+    opacity: 0.3;
 }
 
 .sobre-mi-content {
@@ -584,7 +584,7 @@ ul {
 .stat-number::after {
     content: '+';
     font-size: 1.5rem;
-    color: var(--accent-copper);
+    color: var(--gray-500);
     margin-left: 2px;
     font-weight: 300;
 }
@@ -939,13 +939,14 @@ ul {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
-    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-    0% { left: -100%; }
-    100% { left: 100%; }
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
 }
 
 .skill-progress {
@@ -1528,8 +1529,8 @@ ul {
     transform: translateX(-50%);
     width: 120px;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--accent-copper) 50%, transparent 100%);
-    opacity: 0.4;
+    background: linear-gradient(90deg, transparent 0%, var(--gray-600) 50%, transparent 100%);
+    opacity: 0.3;
 }
 
 .footer-content {
@@ -1552,7 +1553,7 @@ ul {
 }
 
 .footer-text i {
-    color: var(--accent-copper);
+    color: var(--gray-400);
 }
 
 .footer-links {
@@ -1900,12 +1901,12 @@ ul {
 
 /* Pulse animation for status indicator */
 .status-dot {
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 3s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
 }
 
 /* Subtle underline animation for links */
@@ -1933,7 +1934,7 @@ ul {
 
 /* Selection styling */
 ::selection {
-    background: var(--accent-copper);
+    background: var(--primary-dark);
     color: var(--white);
 }
 
