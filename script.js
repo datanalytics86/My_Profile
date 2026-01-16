@@ -248,7 +248,7 @@ function initSmoothScroll() {
 }
 
 // ===== CONTACT FORM HANDLING =====
-function handleContactForm(e) {
+async function handleContactForm(e) {
     e.preventDefault();
 
     const formData = new FormData(contactForm);
@@ -259,24 +259,54 @@ function handleContactForm(e) {
 
     const sendingText = currentLang === 'es' ? 'Enviando...' : 'Sending...';
     const sentText = currentLang === 'es' ? 'Mensaje Enviado' : 'Message Sent';
+    const errorText = currentLang === 'es' ? 'Error al enviar' : 'Send Error';
 
     submitBtn.innerHTML = sendingText;
     submitBtn.disabled = true;
 
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            submitBtn.innerHTML = sentText;
+            submitBtn.style.background = '#10b981';
+            contactForm.reset();
+        } else {
+            throw new Error(result.error || 'Error desconocido');
+        }
+    } catch (error) {
+        console.error('Error enviando formulario:', error);
+        submitBtn.innerHTML = errorText;
+        submitBtn.style.background = '#ef4444';
+
+        // Mostrar mensaje de error al usuario
+        const errorMsg = document.createElement('p');
+        errorMsg.className = 'form-error';
+        errorMsg.style.cssText = 'color: #ef4444; margin-top: 1rem; text-align: center;';
+        errorMsg.textContent = currentLang === 'es'
+            ? 'No se pudo enviar el mensaje. Intenta de nuevo o escribe directamente al email.'
+            : 'Could not send message. Please try again or email directly.';
+
+        const existingError = contactForm.querySelector('.form-error');
+        if (existingError) existingError.remove();
+        contactForm.appendChild(errorMsg);
+
+        setTimeout(() => errorMsg.remove(), 5000);
+    }
+
     setTimeout(() => {
-        submitBtn.innerHTML = sentText;
-        submitBtn.style.background = '#10b981';
-
-        contactForm.reset();
-
-        setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-        }, 3000);
-    }, 1500);
-
-    console.log('Form data:', data);
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+    }, 3000);
 }
 
 // ===== INTERSECTION OBSERVER FOR SUBTLE FADE-IN =====
