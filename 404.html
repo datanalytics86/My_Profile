@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | Nicolas Andrade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafafa;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 20vw, 12rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.15;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 480px) {
+            .links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-code">404</div>
+    <div class="container">
+        <div class="icon">🔍</div>
+        <h1 id="title">Página no encontrada</h1>
+        <p id="description">
+            Lo siento, la página que buscas no existe o ha sido movida.
+            Verifica la URL o regresa al inicio.
+        </p>
+        <a href="/" class="btn" id="home-btn">
+            <span>←</span>
+            <span id="btn-text">Volver al inicio</span>
+        </a>
+        <div class="links">
+            <a href="/#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+            <a href="/#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a>
+            <a href="/#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+            <a href="/#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+        </div>
+    </div>
+
+    <script>
+        // Detectar idioma preferido
+        const savedLang = localStorage.getItem('preferredLang') || 'es';
+
+        if (savedLang === 'en') {
+            document.getElementById('title').textContent = 'Page not found';
+            document.getElementById('description').textContent =
+                "Sorry, the page you're looking for doesn't exist or has been moved. Check the URL or return to the home page.";
+            document.getElementById('btn-text').textContent = 'Back to home';
+            document.documentElement.lang = 'en';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-en');
+            });
+        }
+    </script>
+</body>
+</html>

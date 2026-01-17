@@ -151,8 +151,8 @@
     </main>
 
     <script>
-        const ADMIN_USER = 'nicolas';
-        const ADMIN_PASS = 'andrade2025';
+        // Credenciales movidas a API - estas son solo fallback para desarrollo local
+        const USE_API_AUTH = true; // Cambiar a false solo para desarrollo sin servidor
         const STORAGE_KEYS = {
             OVERRIDES: 'siteOverrides',
             SKILLS: 'skillsData',
@@ -366,10 +366,50 @@
             const username = formData.get('username');
             const password = formData.get('password');
 
-            if (username === ADMIN_USER && password === ADMIN_PASS) {
-                await guardSession();
-            } else {
-                showStatus('Credenciales incorrectas. Intenta nuevamente.', 'error');
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verificando...';
+
+            try {
+                if (USE_API_AUTH) {
+                    // Autenticación via API (producción)
+                    const response = await fetch('/api/auth', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'login', username, password })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        localStorage.setItem(STORAGE_KEYS.SESSION + '_token', result.token);
+                        await guardSession();
+                    } else {
+                        const attemptsMsg = result.attemptsRemaining !== undefined
+                            ? ` (${result.attemptsRemaining} intentos restantes)`
+                            : '';
+                        showStatus(result.error + attemptsMsg, 'error');
+                    }
+                } else {
+                    // Fallback para desarrollo local sin servidor
+                    if (username === 'nicolas' && password === 'andrade2025') {
+                        await guardSession();
+                    } else {
+                        showStatus('Credenciales incorrectas. Intenta nuevamente.', 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Error de autenticación:', error);
+                // Si la API falla, intentar con credenciales locales (desarrollo)
+                if (username === 'nicolas' && password === 'andrade2025') {
+                    await guardSession();
+                    showStatus('Modo desarrollo: API no disponible, usando credenciales locales.', 'info');
+                } else {
+                    showStatus('Error de conexión. Verifica tu red e intenta nuevamente.', 'error');
+                }
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Entrar';
             }
         });
 
