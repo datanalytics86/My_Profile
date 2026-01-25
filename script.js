@@ -290,6 +290,7 @@ function initIntersectionObserver() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                entry.target.classList.add('revealed');
 
                 // Animate skill bars when skills section is visible
                 if (entry.target.closest('.habilidades')) {
@@ -304,8 +305,14 @@ function initIntersectionObserver() {
         });
     }, observerOptions);
 
+    // Observe fade-in elements
     document.querySelectorAll('.timeline-item, .project-card, .skills-category, .education-item, .certification-item, .sobre-mi-stats').forEach(el => {
         el.classList.add('fade-in');
+        observer.observe(el);
+    });
+
+    // Observe reveal elements
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
         observer.observe(el);
     });
 }
