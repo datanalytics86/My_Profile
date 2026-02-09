@@ -319,6 +319,14 @@ function initKeyboardNavigation() {
     });
 }
 
+// ===== DYNAMIC FOOTER YEAR =====
+function updateFooterYear() {
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+}
+
 // ===== INITIALIZE =====
 function init() {
     // Load saved language preference
@@ -335,6 +343,9 @@ function init() {
 
     // Initialize keyboard navigation
     initKeyboardNavigation();
+
+    // Update footer year
+    updateFooterYear();
 
     // Event Listeners
     window.addEventListener('scroll', () => {
