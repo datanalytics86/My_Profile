@@ -61,8 +61,11 @@
     </script>
 </head>
 <body>
+    <!-- Skip to content -->
+    <a href="#sobre-mi" class="skip-link">Saltar al contenido</a>
+
     <!-- Navegacion -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegacion principal">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
                 <span class="logo-text">Nicolas Andrade</span>
@@ -90,7 +93,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero" id="inicio">
+    <header class="hero" id="inicio" role="banner">
         <div class="hero-content">
             <div class="hero-text">
                 <p class="hero-greeting" data-es="Hola, soy" data-en="Hello, I'm">Hola, soy</p>
@@ -126,6 +129,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Sobre Mi -->
     <section class="section sobre-mi" id="sobre-mi">
         <div class="container">
@@ -739,12 +743,12 @@
                         </div>
                     </div>
                     <div class="contact-social">
-                        <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" aria-label="Formulario de contacto">
                     <div class="form-group">
                         <label for="name" data-es="Nombre" data-en="Name">Nombre</label>
                         <input type="text" id="name" name="name" required data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
@@ -769,8 +773,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
