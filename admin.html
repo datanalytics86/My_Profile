@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Editor ejecutivo | Perfil Nicolás Andrade</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,8 +152,17 @@
     </main>
 
     <script>
-        const ADMIN_USER = 'nicolas';
-        const ADMIN_PASS = 'andrade2025';
+        // Credentials stored as SHA-256 hashes (never in plaintext)
+        const ADMIN_USER_HASH = '807a09440428c0a8aef58bd3ece32938b0d76e638119e47619756f5c2c20ff3a';
+        const ADMIN_PASS_HASH = 'a93ae8599799039bb7e89741b150d6131da56a4cec9adad99e7d1c35a03a6975';
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
         const STORAGE_KEYS = {
             OVERRIDES: 'siteOverrides',
             SKILLS: 'skillsData',
@@ -366,7 +376,12 @@
             const username = formData.get('username');
             const password = formData.get('password');
 
-            if (username === ADMIN_USER && password === ADMIN_PASS) {
+            const [userHash, passHash] = await Promise.all([
+                sha256(username),
+                sha256(password)
+            ]);
+
+            if (userHash === ADMIN_USER_HASH && passHash === ADMIN_PASS_HASH) {
                 await guardSession();
             } else {
                 showStatus('Credenciales incorrectas. Intenta nuevamente.', 'error');
