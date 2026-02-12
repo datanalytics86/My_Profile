@@ -23,9 +23,9 @@
 
     <title>Nicolas Andrade | Project Control & Planning Lead</title>
 
-    <!-- Favicon -->
+    <!-- Favicon & Manifest -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -794,10 +794,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="sheets-loader.js"></script>
-    <script src="script.js"></script>
+    <!-- Scripts (defer for non-blocking parse) -->
+    <script src="config.js" defer></script>
+    <script src="sheets-loader.js" defer></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>

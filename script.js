@@ -347,12 +347,12 @@ function init() {
     // Update footer year
     updateFooterYear();
 
-    // Event Listeners
+    // Event Listeners (passive scroll for performance)
     window.addEventListener('scroll', () => {
         handleNavbarScroll();
         handleBackToTop();
         updateActiveNavLink();
-    });
+    }, { passive: true });
 
     if (navToggle) {
         navToggle.addEventListener('click', toggleMobileMenu);
