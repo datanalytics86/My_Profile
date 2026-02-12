@@ -116,13 +116,14 @@ function updatePageLanguage() {
 
 function loadSavedLanguage() {
     const savedLang = localStorage.getItem('preferredLang');
-    if (savedLang && savedLang !== currentLang) {
+    if (savedLang && (savedLang === 'es' || savedLang === 'en') && savedLang !== currentLang) {
         toggleLanguage();
     }
 }
 
 // ===== NAVBAR SCROLL EFFECT =====
 function handleNavbarScroll() {
+    if (!navbar) return;
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
@@ -132,6 +133,7 @@ function handleNavbarScroll() {
 
 // ===== MOBILE MENU TOGGLE =====
 function toggleMobileMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
     document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
@@ -139,6 +141,7 @@ function toggleMobileMenu() {
 
 // ===== CLOSE MOBILE MENU ON LINK CLICK =====
 function closeMobileMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.classList.remove('active');
     navMenu.classList.remove('active');
     document.body.style.overflow = '';
@@ -164,6 +167,7 @@ function updateActiveNavLink() {
 
 // ===== BACK TO TOP BUTTON =====
 function handleBackToTop() {
+    if (!backToTopBtn) return;
     if (window.scrollY > 500) {
         backToTopBtn.classList.add('visible');
     } else {
@@ -208,7 +212,8 @@ function displayStatNumbers() {
     statNumbers.forEach(stat => {
         if (!stat.classList.contains('displayed')) {
             stat.classList.add('displayed');
-            const target = parseInt(stat.getAttribute('data-target'));
+            const target = parseInt(stat.getAttribute('data-target'), 10);
+            if (isNaN(target)) return;
             const suffix = stat.getAttribute('data-suffix') || '';
             stat.textContent = target + suffix;
         }
@@ -254,29 +259,59 @@ function handleContactForm(e) {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData);
 
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+        const errorText = currentLang === 'es' ? 'Por favor ingresa un email valido.' : 'Please enter a valid email.';
+        showFormStatus(errorText, 'error');
+        return;
+    }
+
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
 
     const sendingText = currentLang === 'es' ? 'Enviando...' : 'Sending...';
-    const sentText = currentLang === 'es' ? 'Mensaje Enviado' : 'Message Sent';
 
     submitBtn.innerHTML = sendingText;
     submitBtn.disabled = true;
 
+    // Build mailto link as fallback (since there's no backend)
+    const subject = encodeURIComponent(data.subject || 'Contacto desde portafolio');
+    const body = encodeURIComponent(
+        `Nombre: ${data.name}\nEmail: ${data.email}\n\n${data.message}`
+    );
+    const mailtoUrl = `mailto:nandrade.socias@gmail.com?subject=${subject}&body=${body}`;
+
+    // Open mailto client
+    window.location.href = mailtoUrl;
+
+    const sentText = currentLang === 'es'
+        ? 'Se abrio tu cliente de correo'
+        : 'Your email client was opened';
+
     setTimeout(() => {
         submitBtn.innerHTML = sentText;
         submitBtn.style.background = '#10b981';
-
         contactForm.reset();
 
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.style.background = '';
             submitBtn.disabled = false;
-        }, 3000);
-    }, 1500);
+        }, 4000);
+    }, 800);
+}
 
-    console.log('Form data:', data);
+function showFormStatus(message, type) {
+    let statusEl = contactForm.querySelector('.form-status');
+    if (!statusEl) {
+        statusEl = document.createElement('p');
+        statusEl.className = 'form-status';
+        contactForm.prepend(statusEl);
+    }
+    statusEl.textContent = message;
+    statusEl.className = `form-status form-status--${type}`;
+    setTimeout(() => statusEl.remove(), 5000);
 }
 
 // ===== INTERSECTION OBSERVER FOR SUBTLE FADE-IN =====
@@ -347,12 +382,12 @@ function init() {
     // Update footer year
     updateFooterYear();
 
-    // Event Listeners
+    // Event Listeners (passive scroll for performance)
     window.addEventListener('scroll', () => {
         handleNavbarScroll();
         handleBackToTop();
         updateActiveNavLink();
-    });
+    }, { passive: true });
 
     if (navToggle) {
         navToggle.addEventListener('click', toggleMobileMenu);

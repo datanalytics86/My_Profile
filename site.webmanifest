@@ -1,0 +1,16 @@
+{
+    "name": "Nicolas Andrade - Perfil Profesional",
+    "short_name": "N. Andrade",
+    "description": "Ingeniero Quimico | Planning Lead | Project Control Specialist",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1c1c1e",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}

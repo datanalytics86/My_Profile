@@ -3,17 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nicolas Andrade - Chemical Engineer | Project Control & Management Professional">
-    <title>Nicolas Andrade | CV Profesional</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Nicolas Andrade - Ingeniero Quimico | 13+ anos liderando control de proyectos, costos y planificacion en mineria e industria quimica. Power BI, SAP, Primavera P6.">
+    <meta name="author" content="Nicolas Andrade">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1c1c1e">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nicolas Andrade | Project Control & Planning Lead">
+    <meta property="og:description" content="Ingeniero Quimico con 13+ anos liderando control de proyectos, costos y planificacion en mineria e industria quimica.">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="Nicolas Andrade - Perfil Profesional">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nicolas Andrade | Project Control & Planning Lead">
+    <meta name="twitter:description" content="Ingeniero Quimico con 13+ anos liderando control de proyectos en mineria e industria quimica.">
+
+    <title>Nicolas Andrade | Project Control & Planning Lead</title>
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nicolas Andrade",
+        "jobTitle": "Planning Lead / Project Control Specialist",
+        "description": "Chemical Engineer with Master's in Project Evaluation and Management. 13+ years leading project control in mining and chemical industries.",
+        "email": "nandrade.socias@gmail.com",
+        "telephone": "+56987550637",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Las Condes, Santiago",
+            "addressCountry": "CL"
+        },
+        "url": "https://datanalytics86.github.io/My_Profile/",
+        "sameAs": [
+            "https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128"
+        ],
+        "knowsAbout": ["Project Control", "Power BI", "SAP PS", "Primavera P6", "CAPEX Management", "FEL Methodology", "PMI/PMBOK"]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to content -->
+    <a href="#sobre-mi" class="skip-link">Saltar al contenido</a>
+
     <!-- Navegacion -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegacion principal">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
                 <span class="logo-text">Nicolas Andrade</span>
@@ -41,7 +93,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero" id="inicio">
+    <header class="hero" id="inicio" role="banner">
         <div class="hero-content">
             <div class="hero-text">
                 <p class="hero-greeting" data-es="Hola, soy" data-en="Hello, I'm">Hola, soy</p>
@@ -77,6 +129,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Sobre Mi -->
     <section class="section sobre-mi" id="sobre-mi">
         <div class="container">
@@ -690,12 +743,12 @@
                         </div>
                     </div>
                     <div class="contact-social">
-                        <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/in/nicolas-ignacio-andrade-socias-95538128" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" aria-label="Formulario de contacto">
                     <div class="form-group">
                         <label for="name" data-es="Nombre" data-en="Name">Nombre</label>
                         <input type="text" id="name" name="name" required data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
@@ -720,8 +773,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -745,10 +800,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="sheets-loader.js"></script>
-    <script src="script.js"></script>
+    <!-- Scripts (defer for non-blocking parse) -->
+    <script src="config.js" defer></script>
+    <script src="sheets-loader.js" defer></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>

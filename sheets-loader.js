@@ -168,6 +168,13 @@ const SheetsLoader = {
         });
     },
 
+    // Sanitize text to prevent XSS
+    sanitize(text) {
+        const div = document.createElement('div');
+        div.textContent = text || '';
+        return div.innerHTML;
+    },
+
     // Actualizar experiencia
     updateExperience(data) {
         if (!data || !data.rows || data.rows.length === 0) return;
@@ -179,30 +186,29 @@ const SheetsLoader = {
         timeline.innerHTML = '';
 
         data.rows.forEach(job => {
+            const s = this.sanitize.bind(this);
             const item = document.createElement('div');
             item.className = 'timeline-item';
+
+            const descItems = (job.descripcion_es || job.descripcion_en || '').split('|')
+                .map(d => `<li>${s(d.trim())}</li>`).join('');
+            const techItems = (job.tecnologias || '').split(',')
+                .map(t => `<span class="tech-tag">${s(t.trim())}</span>`).join('');
+
             item.innerHTML = `
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
                     <div class="timeline-header">
-                        <h3 class="job-title" data-es="${job.titulo_es || ''}" data-en="${job.titulo_en || ''}">${job.titulo_es || job.titulo_en}</h3>
-                        <span class="job-company">@ ${job.empresa}</span>
+                        <h3 class="job-title" data-es="${s(job.titulo_es)}" data-en="${s(job.titulo_en)}">${s(job.titulo_es || job.titulo_en)}</h3>
+                        <span class="job-company">@ ${s(job.empresa)}</span>
                     </div>
                     <p class="job-date">
                         <i class="far fa-calendar-alt"></i>
-                        <span data-es="${job.fecha_es || ''}" data-en="${job.fecha_en || ''}">${job.fecha_es || job.fecha_en}</span>
+                        <span data-es="${s(job.fecha_es)}" data-en="${s(job.fecha_en)}">${s(job.fecha_es || job.fecha_en)}</span>
                     </p>
-                    <p class="job-project" data-es="${job.proyecto_es || ''}" data-en="${job.proyecto_en || ''}">${job.proyecto_es || job.proyecto_en}</p>
-                    <ul class="job-description">
-                        ${(job.descripcion_es || job.descripcion_en || '').split('|').map(item =>
-                            `<li>${item.trim()}</li>`
-                        ).join('')}
-                    </ul>
-                    <div class="job-technologies">
-                        ${(job.tecnologias || '').split(',').map(tech =>
-                            `<span class="tech-tag">${tech.trim()}</span>`
-                        ).join('')}
-                    </div>
+                    <p class="job-project" data-es="${s(job.proyecto_es)}" data-en="${s(job.proyecto_en)}">${s(job.proyecto_es || job.proyecto_en)}</p>
+                    <ul class="job-description">${descItems}</ul>
+                    <div class="job-technologies">${techItems}</div>
                 </div>
             `;
             timeline.appendChild(item);
@@ -279,10 +285,10 @@ const SheetsLoader = {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    // Esperar un momento para que config.js cargue
-    setTimeout(() => {
+    // With defer scripts, config.js is guaranteed to load before this
+    if (window.SITE_CONFIG && window.SITE_CONFIG.GOOGLE_SHEET_ID) {
         SheetsLoader.loadAllData();
-    }, 100);
+    }
 });
 
 // Exponer globalmente para debugging
