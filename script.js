@@ -116,13 +116,14 @@ function updatePageLanguage() {
 
 function loadSavedLanguage() {
     const savedLang = localStorage.getItem('preferredLang');
-    if (savedLang && savedLang !== currentLang) {
+    if (savedLang && (savedLang === 'es' || savedLang === 'en') && savedLang !== currentLang) {
         toggleLanguage();
     }
 }
 
 // ===== NAVBAR SCROLL EFFECT =====
 function handleNavbarScroll() {
+    if (!navbar) return;
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
@@ -132,6 +133,7 @@ function handleNavbarScroll() {
 
 // ===== MOBILE MENU TOGGLE =====
 function toggleMobileMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
     document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
@@ -139,6 +141,7 @@ function toggleMobileMenu() {
 
 // ===== CLOSE MOBILE MENU ON LINK CLICK =====
 function closeMobileMenu() {
+    if (!navToggle || !navMenu) return;
     navToggle.classList.remove('active');
     navMenu.classList.remove('active');
     document.body.style.overflow = '';
@@ -164,6 +167,7 @@ function updateActiveNavLink() {
 
 // ===== BACK TO TOP BUTTON =====
 function handleBackToTop() {
+    if (!backToTopBtn) return;
     if (window.scrollY > 500) {
         backToTopBtn.classList.add('visible');
     } else {
@@ -208,7 +212,8 @@ function displayStatNumbers() {
     statNumbers.forEach(stat => {
         if (!stat.classList.contains('displayed')) {
             stat.classList.add('displayed');
-            const target = parseInt(stat.getAttribute('data-target'));
+            const target = parseInt(stat.getAttribute('data-target'), 10);
+            if (isNaN(target)) return;
             const suffix = stat.getAttribute('data-suffix') || '';
             stat.textContent = target + suffix;
         }

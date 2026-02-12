@@ -285,10 +285,10 @@ const SheetsLoader = {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    // Esperar un momento para que config.js cargue
-    setTimeout(() => {
+    // With defer scripts, config.js is guaranteed to load before this
+    if (window.SITE_CONFIG && window.SITE_CONFIG.GOOGLE_SHEET_ID) {
         SheetsLoader.loadAllData();
-    }, 100);
+    }
 });
 
 // Exponer globalmente para debugging
